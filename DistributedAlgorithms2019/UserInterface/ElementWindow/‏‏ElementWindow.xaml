@@ -1,0 +1,186 @@
+﻿<Window x:Class="DistributedAlgorithms.ElementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ElementInput" Width="Auto" WindowStyle="None" 
+        BorderBrush="Black"
+        BorderThickness="1"
+        SizeToContent = "WidthAndHeight"
+    ScrollViewer.CanContentScroll="True"
+       ScrollViewer.VerticalScrollBarVisibility="Visible"
+        xmlns:System="clr-namespace:System;assembly=mscorlib">
+    <Window.Resources>
+        <!-- Constants common to all the fields -->
+        <System:Double x:Key="FieldFontSize">11</System:Double>
+        <System:Double x:Key="FieldHeight">22</System:Double>
+        <Thickness x:Key="FieldMargin">1</Thickness>
+        <Thickness x:Key="FieldPadding">2</Thickness>
+        <CornerRadius x:Key="BorderCornerRadious">3</CornerRadius>
+        <SolidColorBrush x:Key="NotEdittableBackground" Color="WhiteSmoke" />
+        <SolidColorBrush x:Key="EdittableBackground" Color="White" />
+
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}" x:Name="ComboBoxToggleButton">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver"/>
+                        <VisualState x:Name="Pressed"/>
+                        <VisualState x:Name="Disabled"/>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Path x:Name="Arrow" Grid.Column="1" Data="M 0 0 L 4 4 L 8 0 Z" Fill="DimGray" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+
+        <!-- Element Window Grid button -->
+        <Style x:Key="ElementWindowGridButton" TargetType="Button">
+            <Setter Property="Margin" Value="{StaticResource FieldMargin}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                                            BorderBrush="{TemplateBinding Property=BorderBrush}" 
+                                            BorderThickness="{TemplateBinding Property=BorderThickness}" 
+                                            Background="{TemplateBinding Property=Background}"
+                                            Height="{StaticResource FieldHeight}"
+                                            CornerRadius="{StaticResource BorderCornerRadious}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{StaticResource FieldPadding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled"  Value="false">
+                                <Setter Property="Background" Value="{StaticResource NotEdittableBackground}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled"  Value="true">
+                                <Setter Property="Background" Value="{StaticResource EdittableBackground}" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ElementWindow ComboBox -->
+    <Style x:Key="ElementWindowComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsEditable" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="Margin" Value="{StaticResource FieldMargin}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid>
+                        <Border x:Name="ContentPresenterBorder" 
+                                                BorderBrush="{TemplateBinding Property=BorderBrush}"
+                                                BorderThickness="{TemplateBinding Property=BorderThickness}" 
+                                                Background="{TemplateBinding Property=Background}" 
+                                                CornerRadius="{StaticResource BorderCornerRadious}"
+                                                Height="{StaticResource FieldHeight}">
+                            <DockPanel>
+                                <ToggleButton Margin="{StaticResource FieldPadding}"  x:Name="ToggleButton" DockPanel.Dock="Right" ClickMode="Press" Focusable="false"
+                                                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              Template="{StaticResource ComboBoxToggleButton}" />
+
+                                <ContentPresenter  DockPanel.Dock="Left" Margin="{StaticResource FieldPadding}" 
+                                                                   Content="{TemplateBinding SelectedItem}"
+                                                                   ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                                   ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                                   HorizontalAlignment="Center" IsHitTestVisible="False" x:Name="ContentSite"
+                                                                   VerticalAlignment="Center" 
+                                                                   TextElement.FontSize="{StaticResource FieldFontSize}"/>
+
+                                <Popup DockPanel.Dock="Right" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" x:Name="Popup" Placement="Bottom" PopupAnimation="Fade">
+                                    <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{TemplateBinding ActualWidth}" x:Name="DropDown" SnapsToDevicePixels="True">
+                                        <Border x:Name="DropDownBorder" Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="3" />
+                                        <ScrollViewer Margin="2" SnapsToDevicePixels="True">
+                                            <StackPanel KeyboardNavigation.DirectionalNavigation="Contained" IsItemsHost="True" TextBlock.Foreground="Black" />
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Popup>
+
+                            </DockPanel>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"  Value="false">
+                            <Setter Property="Background" Value="{StaticResource NotEdittableBackground}" />
+                        </Trigger>
+
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    </Window.Resources>
+
+
+    <DockPanel x:Name="DocPanel_Main" LastChildFill="True" Width="Auto" MaxWidth="1000" Margin="0">
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Bottom" Margin="10,10">
+            <StackPanel x:Name="StackPanel_Buttons" Orientation="Horizontal" HorizontalAlignment="Center" Height="35" Margin="5,5"/>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="10,10">
+            <StackPanel x:Name="StackPanel_Name" Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="5,5" >
+                <Label x:Name="Label_Name" Content="" FontWeight="Bold" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Bottom" Margin="10,10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="5,5">
+                <Grid x:Name="Grid_Data" Margin="0" Width="Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="ColumnDefinition_InitColumn" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_TreeColumn" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_AfterTreeColumnSeparator" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_TypeColumn" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_AfterTypeColumnSeparator" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_ExistingValueColumn" Width="Auto" />
+                        <ColumnDefinition x:Name="ColumnDefinition_AfterExistingValueColumnSeparator" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_NewValueColumn" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_AfterNewValueColumnSeparator" Width="Auto"/>
+                        <ColumnDefinition x:Name="ColumnDefinition_EmptyColumn" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <GridSplitter x:Name="GridSplitter_InitColumnSeparator" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" ResizeBehavior="PreviousAndNext" Width="2" Background= "Black"/> 
+                    <StackPanel x:Name="StackPanel_AttributeNames"  Grid.Column="1"  Margin="2,0,2,0"  Height="Auto" >
+                        <Label x:Name="Label_key"  Content="Key" FontWeight="Bold" HorizontalAlignment="Center" ></Label>
+                        <TreeView x:Name="TreeView" TreeViewItem.Expanded="TreeViewItem_Expanded" TreeViewItem.Collapsed="TreeViewItem_Collapsed" ItemsSource="{Binding}" BorderThickness="0">
+                        </TreeView>
+                    </StackPanel>
+                    <GridSplitter x:Name="GridSplitter_AfterTreeColumnSeparator" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" ResizeBehavior="PreviousAndNext" Width="2" Background="Black"/>
+                    <StackPanel x:Name="StackPanel_AttributeTypes"  Grid.Column="3"  Margin="2,0,2,0"  Height="Auto" >
+                        <Label x:Name="Label_Types" Content="Type" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+                    </StackPanel>
+                    <GridSplitter x:Name="GridSplitter_AfterTypeColumnSeparator" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" ResizeBehavior="PreviousAndNext" Width="2" Background="Black"/>
+                    <StackPanel x:Name="StackPanel_AttributeExistingValues" Grid.Column="5" Margin="2,1,2,0"  Width="Auto" Height="Auto">
+                        <Label x:Name="Label_ExistingValues" Content="Existing Values" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+                    </StackPanel>
+                    <GridSplitter x:Name="GridSplitter_AfterExistingValueColumnSeparator" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="6" ResizeBehavior="PreviousAndNext" Width="2" Background="Black"/>
+
+                    <StackPanel x:Name="StackPanel_AttributeNewValues" Grid.Column="7" Margin="2,1,2,0" Width="Auto"  Height="Auto" HorizontalAlignment="Stretch">
+                        <Label x:Name="Label_NewValue" Content="New Values" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+                    </StackPanel>
+                    <GridSplitter x:Name="GridSplitter_AfterNewValueColumnSeparator" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="8" ResizeBehavior="PreviousAndNext" Width="2" Background="Black"/>
+                    <!--
+                    <StackPanel x:Name="StackPanel_Dummy" Grid.Column="6" Margin="2,1,10,0" Width="Auto"  Height="Auto" HorizontalAlignment="Stretch">
+                    </StackPanel>
+                    -->
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+</Window>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28822.285
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistributedAlgorithms2019", "DistributedAlgorithms2019\DistributedAlgorithms2019.csproj", "{88FFE939-0255-40F7-ACDC-F163BD7B5DCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88FFE939-0255-40F7-ACDC-F163BD7B5DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FFE939-0255-40F7-ACDC-F163BD7B5DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FFE939-0255-40F7-ACDC-F163BD7B5DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FFE939-0255-40F7-ACDC-F163BD7B5DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0F19427-C24F-4134-99BA-E0A1AA7F39E5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,243 @@
+﻿<MethodReturns>
+  <!--
+		AutoDoc rules
+		=============
+
+		For each documentation entry that needs to be generated, Atomineer executes an appropriate
+		section of the rules in this AutoDoc section (e.g. for a parameter, the <Parameters> section
+		is executed). Execution stops when a match is found and a documentation result is returned.
+
+		Full documentation can be found in the Atomineer user manual.
+		--> <!-- prefix="%containingClass% returns "> -->
+			<!-- Rules used for method/property return values
+
+				 Full documentation can be found in the Atomineer user manual.
+
+				 Note that you can delete all the examples, and as long as this section does not
+				 end with a <Set> command, Atomineer will "fall through" your custom rules and 
+				 use its defaults if your rules do not supply any documentation text.
+
+				 Additional values that can be used for filtering/documenting include:
+					name			The name of the method owning the return type
+					sName			The name of the method, converted to sentence (space separated words) format, with abbreviated words expanded
+					methodName		The name of the method
+					methodType		The type of the method (one of: method, property, indexer, delegate)
+					numArgs			The numbe rof arguments to the method
+					argTypeN		The type of argument 'N' (1, 2, 3...)
+					argTypeBaseN	The type of argument 'N' (1, 2, 3...)
+					argNameN		The name of argument 'N' (1, 2, 3...)
+
+					type			The return type for the method ("const int*") (without a namespace)
+					typeBase		The return type for the method, not including any modifiers ("int")
+					retType			The return type for the method, including namespace if supplied (witout a namespace)
+					retTypeBase		The return type for the method, not including any modifiers, with namespace
+					isPointer		"y" or "n", indicating if the return type includes a "*"
+					isReference		"y" or "n", indicating if the return type includes an "&" or "ref"
+					attr-XXXX		For each attribute assigned to the method, a variable is added containing the attribute's
+									parameters as its value. Test if an attribute is defined with <If defined="attr-XXXX"...
+			 -->
+
+			<If defined="attr-notnull" suffix=". This will never be null" />
+			<If defined="attr-canbenull" suffix=". This may be null" />
+
+			<If sName="Minimum,Maximum,Average,Median,Mean" desc="The %sname:LCase% value" />
+
+			<If methodType="method">
+				<If sName="To #">
+					<If name="ToString" desc="A %retType% that represents this %object%" />
+					<If name="ToBinary" desc="A binary representation of this %object%" />
+					<If name="ToArray" desc="An array that represents the data in this %object%" />
+					<If numArgs="0" desc="This %object% as a %retType%" />
+					<If numArgs="1" desc="%argName1% as a %retType%" />
+					<Set desc="The given data converted to a %retType%" />
+				</If>
+
+				<If name="GetHashCode" desc="A hash code for this %object%" />
+
+				<If isPointer="y">
+					<If retType="#^" continue="y" desc="%nullptr% if it fails, else " />
+					<IfNot retType="#^" continue="y" desc="%null% if it fails, else " />
+				</If>
+
+				<If retType="IEnumerable#">
+					<If sname="Get By #,Get #,Fetch #,List #,Enumerate #,Scan #,Traverse #,Find By #,Find On #,Find #,Search By #,Search On #,Search For #,Search #">
+						<If sname="# All" desc="An enumerator that allows foreach to be used to process all items in this collection" />
+						<If sname="# All #" desc="An enumerator that allows foreach to be used to process all %match2:StripGen:Sentence:Plural:LCase% in this collection" />
+						<Set desc="An enumerator that allows foreach to be used to process the %match:StripGen:Sentence:Plural:LCase% in this collection" />
+					</If>
+					<If sname="Get,Fetch,List,Enumerate,Scan,Traverse,Find,Search" desc="An enumerator that allows foreach to be used to process the matched items" />
+					<Set desc="An enumerator that allows foreach to be used to process %sname:StripGen:LCase% in this collection" />
+				</If>
+
+				<If retType="bool,boolean,system.boolean">
+					<If sName="Contains" desc="%true% if the object is in this collection, %false% if not" />
+					<If sname="is # valid,is # invalid,is # registered,is # active,is # inactive,is # enabled,is # disabled,is # empty,is # open,is # closed,is # available,is # online,is # offline" desc="%true% if the %match:LCase% is %name:lastWord:LCase%, %false% if not" />
+					<If sName="Equals" desc="%true% if the objects are considered equal, %false% if they are not" />
+					<If sName="Is #,Has #,Are #" desc="%true% if %match:Sentence:LCase%, %false% if not" />
+					<If sname="Can #,Allow #" desc="%true% if we %sname:firstWord:lcase% %match:LCase%, %false% if not" />
+					<If sName="Test #,# Test" desc="%true% if the test passes, %false% if the test fails" />
+					<If sName="Matches #,Equals #" desc="%true% if %sName:LCase%, %false% if not" />
+					<Set desc="%true% if it succeeds, %false% if it fails" />
+				</If>
+
+				<If sname="Create #">
+					<If type="#[]" desc="A new array of %match:Sentence:LCase%" />
+					<Set desc="The new %match:Sentence:LCase%" />
+				</If>
+
+				<If sName="Clone,Duplicate" desc="A copy of this %object%" />
+				<If sName="Pop" desc="The previous top-of-stack object" />
+				<If sName="Peek" desc="The current top-of-stack object" />
+				<If sName="Dequeue,De Queue" desc="The head object from this queue" />
+				<If sName="Compare To" desc="Negative if this %object% is less than the other, 0 if they are equal, or positive if this is greater" />
+				<If sName="Compare" desc="Negative if '%argName1%' is less than '%argName2%', 0 if they are equal, or positive if it is greater" />
+				<If sName="Format" desc="The formatted value" />
+				<If sName="Format #" desc="The formatted %match:Sentence:LCase%" />
+				<If sName="Sort" desc="The sorted values" />
+				<If sName="Sort #" desc="The sorted %match:Sentence:LCase%" />
+				<If sName="Extract #" desc="The extracted %match:Sentence:LCase%" />
+
+				<If name="Main" desc="Exit-code for the process - 0 for success, else an error code" />
+				<If name="OnInitDialog" desc="%true% if the focus has been left alone, %false% if it has been set into a control" />
+
+				<If sname="Recalculate #,Calculate #,Get #,Compute #,Accumulate #">
+					<If sName="# Minimum,# Maximum,# Average,# Median,# Mean,# Range,# Standard deviation" desc="The calculated %sname:StripFirstWord:LCase%" />
+				</If>
+
+				<If sName="Get X #,Get Y #,Get Z #" desc="The %sName:LCase:StripFirstWord%" />
+				<If sName="Get From #,Fetch From #,Return From #,Query From #,Read From #,Load From #,Generate From#">
+					<If type="#[]" desc="An array containing the data that was read from the %match:Sentence:LCase%" />
+					<Set desc="The data that was read from the %match:Sentence:LCase%" />
+				</If>
+				<If sName="Get #,Fetch #,Return #,Query #,Read #,Load #,Generate #">
+					<If type="#[]" desc="An array of %match:Sentence:LCase%" />
+					<Set desc="The %match:Sentence:LCase%" />
+				</If>
+				<If sName="Find By #,Find On #,Find #,Search By #,Search On #,Search For #,Search #">
+					<If sName="Find First #,Find Next #,Find Previous #,Find Last #,Find Nearest #,Find Closest #,Find Furthest #,Find Farthest #,Find Newest #,Find Oldest #,Find Largest #,Find Biggest #,Find Smallest #,Find By #,Find On #,Find #,Search By #,Search On #,Search For #,Search #" desc="The found %match:Sentence:LCase%" />
+					<If sName="Find All #,Search For All #" desc="All found %match:Sentence:LCase%" />
+				</If>
+				<If sName="Index of Any #,Last Index Of Any #,Index Of #,Last Index Of #" desc="The zero-based index of the found %match:Sentence:LCase%, or -1 if no match was found" />
+
+				<If sName="Recalculate #,Calculate #,Compute #,Accumulate #" desc="The calculated %match:Sentence:LCase%" />
+				<If sName="Convert To #">
+					<If numArgs="0" desc="%object% converted to a %match:Sentence:LCase%" />
+					<Set desc="The given data converted to a %match:Sentence:LCase%" />
+				</If>
+
+				<If sName="Convert #">
+					<If numArgs="0" desc="%object% converted to a %match:Sentence:LCase%" />
+					<Set desc="The %match:FirstWord:LCase% converted %match:StripFirstWord:Sentence:LCase%" />
+				</If>
+
+				<If retType="#List#,#Collection#" desc="A list of " />
+
+				<If sName="Total Of #,Total #,Number Of #,Num Of #,Number #,Num #,Count Of #,Count #,Sum #,Sum Of #" desc="The total number of %match:Sentence:LCase%" />
+
+				<If retType="HANDLE,HGLOBAL,HLOCAL" desc="The handle of the " />
+				<If retType="HWND" desc="The handle of the window" />
+				<If retType="HMENU" desc="The handle of the menu" />
+				<If retType="HEVENT" desc="The handle of the event" />
+				<If retType="HKEY" desc="The handle of the registry key" />
+				<If retType="HBITMAP" desc="The handle of the image" />
+				<If retType="HBRUSH" desc="The handle of the brush" />
+				<If retType="HTREEITEM" desc="The handle of the tree item" />
+				<If retType="HCURSOR" desc="The handle of the cursor" />
+
+				<!-- In untyped languages, we may not have any information on the return type of a function,
+						in which case we just leave the description blank. -->
+				<If retType="unknown" desc=" " />
+
+				<If retType="#**" desc="A handle to a %match%" />
+				<If retType="#*" desc="A pointer to a %match%" />
+				<If retType="#&amp;" desc="A reference to a %match%" />
+
+				<Set desc="A %retType%" />	<!-- Assume the return type is more useful than a blank entry -->
+			</If>
+
+			<If methodType="property">
+				<If retType="bool,boolean,system.boolean">
+					<If sname="is # valid,is # invalid,is # registered,is # active,is # inactive,is # enabled,is # disabled,is # empty,is # open,is # closed,is # available,is # online,is # offline" desc="%true% if the %match:LCase% is %name:lastWord:LCase%, %false% if not" />
+					<If sName="Is #,Has #" desc="%true% if this %object% %methodName:Sentence:LCase%, %false% if not" />
+					<If sName="Are #,Can #,Should #,Must #" desc="%true% if we %methodName:Sentence:LCase%, %false% if not" />
+					<Set desc="%true% if %sName:LCase%, %false% if not" />
+				</If>
+
+				<If sName="Total Of #,Total #,Number Of #,Num Of #,Number #,Num #,Count Of #,Count #,Sum #,Sum Of #" desc="The total number of %match:Sentence:LCase%" />
+
+				<If sName="default #" desc="The default %match:Sentence:LCase%" />
+				<If sName="number of #,number #,# count" desc="The number of %match:Sentence:LCase:Plural%" />
+				<If sName="size of #,# size" desc="The size of the %match:Sentence:LCase%" />
+				<If sName="type of #,# type" desc="The type of the %match:Sentence:LCase%" />
+				<If sName="# filename,# file name" desc="The filename of the %match:Sentence:LCase% file" />
+				<If sName="# leafname,# leaf name" desc="The leafname of the %match:Sentence:LCase% file" />
+				<If sName="directory name,directory,dir name,dirname,dir path,dirpath" desc="The pathname of the directory" />
+				<If sName="folder name,foldername,folder" desc="The pathname of the folder" />
+				<If sName="# folder name,# folder" desc="The pathname of the %match:Sentence:LCase% folder" />
+				<If sName="# directory name,# directory,# dir name,# dirname" desc="The pathname of the %match:Sentence:LCase% directory" />
+				<If sName="path,pathname,path name,file path, filepath" desc="The full pathname of the file" />
+				<If sName="# pathname,# path name,#file path,# path" desc="The full pathname of the %match:Sentence:LCase% file" />
+				<If sName="# information,# description,# data" desc="Information describing the %match:Sentence:LCase%" />
+				<If sName="# manifest" desc="A list of %match:Sentence:LCase:Plural%" />
+				<If sName="# message" desc="A message describing the %match:Sentence:LCase%" />
+				<If sName="# count" desc="The number of %match:Sentence:LCase:Plural%" />
+				<If sName="# by">
+					<If retType="string" desc="Describes who %match:Sentence:LCase% this %object%" />
+					<Set desc="Amount to %match:Sentence:LCase% by" />
+				</If>
+				<If sName="step,increment" desc="The amount to increment by" />
+				<If sName="# options,# parameters,# preferences" desc="Options that control the %match:Sentence:LCase%" />
+				<If sName="# unique identifier" desc="Unique identifier of the %match:Sentence:LCase%" />
+				<If sName="date of #,# date,time of #,# time" desc="The %sName:LCase%" />
+				<If sName="# identifier,# length,# width,# height,# depth,# size,# extent,# extents,# name,# type,# color,# colour" desc="The %sname:LastWord:LCase% of the %match:Sentence:LCase%" />
+				<If sName="# identifiers,# lengths,# widths,# heights,# depths,# sizes,# names,# types,# colors,# colours,# dates,# times" desc="A list of %sname:LastWord:LCase% of the %match:Sentence:LCase:Plural%" />
+				<If sName="# identifier list,# length list,# width list,# height list,# depth list,# size list,# name list,# type list,# color list,# colour list,# date list,# time list" desc="The %sname:StripLastWord:LastWord:LCase:Plural% of the %match:Sentence:LCase:Plural%" />
+
+				<If sName="length of #,width of #,height of #,depth of #,size of #,extent of #,extents of #,name of #,type of #,color of #,colour of #" desc="The %sname:FirstWord:SCase% of the %match:Sentence:LCase%" />
+				<If sName="# buffer,# bucket" desc="A %sname:LastWord:SCase% for %match:Sentence:LCase% data" />
+				<If sName="# list,# queue,# stack,# collection,# array,# dictionary" desc="A %sname:LastWord:SCase% of %match:Sentence:LCase:Plural%" />
+
+				<Set desc="The %methodName:Sentence:LCase%" />
+			</If>
+
+			<If methodType="indexer">
+				<Set desc="The indexed item" />
+			</If>
+
+			<If methodType="delegate">
+				<Set desc="A %retType%" />	<!-- Assume the return type is more useful than a blank entry -->
+			</If>
+
+			<If methodType="operator">
+				<If methodName="&lt;&lt;,&gt;&gt;" desc="The shifted result" />
+
+				<If methodName="!" desc="The logical inverse of this value" />
+
+				<If methodName="true" desc="%true% if this %object% is in a 'true' state, else false" />
+				<If methodName="false" desc="%true% if this %object% is in a '%false%' state, else %false%" />
+
+				<If methodName="==" desc="%true% if the parameters are considered equivalent" />
+				<If methodName="!=" desc="%true% if the parameters are not considered equivalent" />
+				<If methodName="&lt;" desc="%true% if the first parameter is less than the second" />
+				<If methodName="&lt;=" desc="%true% if the first parameter is less than or equal to the second" />
+				<If methodName="&gt;" desc="%true% if the first parameter is greater than to the second" />
+				<If methodName="&gt;=" desc="%true% if the first parameter is greater than or equal to the second" />
+
+				<If methodName="-&gt;" desc="The dereferenced object" />
+				<If name="[]" desc="The indexed value" />
+
+				<If methodName="=" desc="A shallow copy of this %object%" />
+
+				<If name="new" desc="The allocated object" />
+				<If name="new[],new []" desc="The allocated array" />
+
+				<Set desc="The result of the operation" />
+			</If>
+
+			<!-- MVC support -->
+			<If retType="ActionResult" desc="A response stream to send to the %name% View" />
+			<If retType="JsonResult" desc="A JSON response stream to send to the %name% action" />
+			<If retType="Task#" desc="A task object representing the asynchronous operation" />
+
+			<Set desc="A %retType%" />	<!-- Assume the return type is more useful than a blank entry -->
+		</MethodReturns>

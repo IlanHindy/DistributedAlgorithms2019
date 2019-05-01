@@ -1,0 +1,59 @@
+﻿/*! \page accesAfterAutomaticCodeGeneration "Access after automatic code generation"
+ * # What does the automatic code generation produces
+ * ## Code generated in the InitAndDef files
+ * Note : the code of this file must not be change manually if you want to change the setting reopen the __Add or Update Algorithm__ dialog
+ * ## For messages:
+ * ### Enums			
+ * -# A main enum called MessageTypes that holds the possible messages
+ * -# An enum for each message holds it's components
+ * -# An enum for each dictionary which is a component of the message
+ 
+ * ### Methods (The methods are part of the Process class because this is the class that uses them)
+ * -# A send method for each message
+ * -# A create method for each message that can be used to build the message 
+ * -# A create method for each dictionary or list that are part of the message
+ 
+ * ## For NetworkElements:
+ * ### Enums (For each NetworkElement)
+ * -# Enum for each one of the 2 dictionaries (PrivateAttributes, OperationResults)
+ * -# Enum for each one of the dictionaries that is a components of the variables or the parameters
+ *
+ * ### Constants list
+ * -# For each key in all the enums that the programmer might use there is a constant with value which is
+ *    a string presentation of the key
+ * -# For each key in the NetworkElement's main dictionaries a getter/setter
+ *
+ * ### Getters and setter 
+ * -# Getters and Setters To all the attributes found in the main dictionaries of the networkElement
+ *
+ * ##### Methods (For each one of the NetworkElements)
+ * -# An Init method for each one of the 2 dictionaries
+ * -# An Init method for each one of the dictionaries or lists that are components of the variables or parameters
+ *
+ * # Accessing attributes in programing time
+ *~~~{.cs}
+ * // In the following example a dictionary with key dict was added to the process OperationResults with 
+ * // an attribute with key Attr
+ * // Access from the process class
+ * // Access to the dictionary (For example add attribute with value to the dictionary)
+ * // Using the Getters and setters
+ * Dict.Add(1) // Note : The Dict has capital letter
+ * // Using indexing (Constants definition -> string -> string indexing of the networkElement)
+ * this[dict].Add(1); // Note : The dict starts with small letter
+ *
+ * // Access the attr attribute (For example set the value of attr to 1)
+ * Dict[attr] = 1;
+ * // This is achieved by:
+ * // Getter/Setter on a networkElement returns the dictionary
+ * // Constants definition -> string -> string indexing of AttributeDictionary
+ * // The dictionary knows it's enum name so it adds it to the string of the key
+ *
+ * // Messages
+ * // Checking the type of a message
+ * TypesUtility.CompareTypes(message.MessageType, someMessageType)
+ * // This is achieved by :
+ * // Getters /setters for networkElement (the message)
+ * // (constants definition -> the someMessageType key)
+ *~~~
+ */
+ 

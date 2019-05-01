@@ -1,0 +1,49 @@
+﻿
+/*! \page  DefineAttributePresentation The way the controls presentation in ElementWindow is determined 
+ * ## Introduction
+ * - The DistributedAlgorithms.ElementWindow is the base window for all the input inserting windows
+ * - The DistributedAlgorithms.ElementWindow present each attribute in 3 controls
+ *	-# The __header__ TextBox which contains the names (the key) of the field
+ *	-# The __existing value__ TextBox which contains the value currently exist in the NetworkElement
+ *	-# The __new value__ control which contains the new value inserted
+ * - Each time the window is been build the parameters for the fields presentation has to be determined
+ *
+ * ## The algorithm implementation
+ * ### Data structures
+ * -# The class DistributedAlgorithms.ElementWindowPrms is used to hold the presentation parameters
+ * -# A method of the delegate DistributedAlgorithms.ElementWindowPrmsDelegate is part each attribute make it possible
+ *	  for each attribute to define it's own presentation parameters
+ * -# The enums DistributedAlgorithms.InputFieldType and DistributedAlgorithms.InputWindows are used to hold the options 
+ *
+ * ### The calling chain
+ * -# The __ElementWindow__ call the attributes's __GetElementWindowPrms__ method
+ * -# The __GetElementWindowPrms__ method call the method found in the delegate __ElementWindowPrmsMethod__ of the attribute
+ * -# The __ElementWindowPrmsMethod__ is expected to fill the parameters for each field in the __ElementWindow__
+ * -# After that the __GetElementWindowPrms__ check if all the controls properties were set and if not files the data
+ *    for the control that was not set from a default methods
+ *
+ * ### Definition of the default methods
+ * -# The attribute handles the default setting for the simple value types
+ * -# The attribute calls the default setting of the type for the complex types
+ * -# The definition of the default methods is found in IValueHolder
+ *
+ * ## Changing the behavior
+ * ### Changing the behavior of all the attributes in a window
+ * - Change the default method.
+ * - Do something like this (In the default methods)
+ * ~~~{.cs}
+ * if (inputWindow == InputWindows./* your window */)
+ * {
+ *   //Set the attributes
+ * }
+ * ~~~
+
+ * ### Changing the behavior of one attribute
+ * - Create in the Class that is supposed to hold the attribute a static method from the type of the delegate
+ * - When adding the attribute set the method to the attribute's ElementWindowPrmsMethod variable 
+ * 
+ *
+ * 
+ */
+
+ 

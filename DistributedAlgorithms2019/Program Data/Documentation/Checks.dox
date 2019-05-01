@@ -1,0 +1,76 @@
+﻿
+/*! \page checkInDesignPhase Checks activated while in design phase
+ * ## Introduction
+ * When in edit network/process/channel window and a value was changed the following is done:
+ * -#	Checking if the new value can replace the old value (The string of the new value can be parsed
+		to the type of the old value)
+ * -#	Activate a check method specific to the attribute
+ *
+ * ##	Writing the the check attribute method
+ *
+ * ###	The following is the prototype of the check attribute metho
+ * ~~~{.cs}
+ * // network         The network.
+ * // networkElement  The network element.   (in this case the process that is been editted)
+ * // parentAttribute The parent attribute.  (The parent attribute in the editting window tree)
+ * // attribute       The attribute.         (The attribute that is been changed)
+ * // newValue        The new value.         (The new value)
+ * // [out] errorMessage    Message describing the error.  (A string for a message that will be presented if an error was detected by this method)
+ * //
+ * // returns : True if it's OK to change the attribute's value
+ * public static bool TemplateNetworkDefaultAttributeCheck(BaseNetwork network, NetworkElement networkElement, Attribute parentAttribute, Attribute attribute, string newValue, out string errorMessage)
+ * {
+ *		errorMessage = "";
+ *      return true;
+ * }
+ * ~~~
+ *
+ * ###	The following is the way the check static method is assigned to the attribute
+ * ~~~{.cs}
+ * // Replace the TemplateProcessDefaultAttributeCheck with the name of your check method
+ * // Option 1 after defining the attribute
+ * attribute.EndInputOperationMethod =  TemplateProcessDefaultAttributeCheck
+ * // Option 2 when defining the attribute
+ * PrivateAttributes.Value.Add(PrivateAttributeKeys.SomeKey, new Attribute {Value = SomeValue, EndInputOperationMethod =  TemplateProcessDefaultAttributeCheck})
+ * ~~~
+ */
+
+ /*! \page checkBeforeRunning Checks activated before running
+  *
+  * ##	Introduction
+  * -#	Before running the user has to press the check network button
+  * -#	When this button is presses the following is done
+  * -#	For each network element in the design (the network, the channels, the processes) the following is done
+  * -#	If the network element was not editted or was changed :
+  *		-#	The CheckBuild method is activated. The CheckBuild method activates all the checks needed for the network element
+  *			-# The CheckBuild method is filling a List that contains an entry for each check that failed
+  *			-# The type of the entry is BuildCorrectionParameters and it includs 3 variables:
+  *				-# A string with the message that will present when asking the user if he wants to correct the error
+  *				-# The correction method
+  *				-# An object for the parameters for the correction method
+  *		-#	For each error that was detected
+  *			-#  A dialog asking the user if he wants to correct the method is shows
+  *			-#	If the user answeres yes the correction method is activated
+  *
+  *	## Implementing
+  *
+  * ### Writing the CheckBuild method 
+  * The method is already found in the code automatically generated
+  * ~~~{.cs}
+  * protected override void CheckBuild(List<BuildCorrectionParameters> buildCorrectionsParameters)
+  * {
+  *		base.CheckBuild(buildCorrectionsParameters);
+  *
+  *		// Insert your checks here
+  *	}
+  * ~~~
+  *
+  *	### for each error a correction method has to be written
+  * One (empty) method already found in the automatically generated code
+  * ~~~{.cs}
+  * public void CorrectionMethod(object correctionParameters)
+  * {
+  *
+  * }
+  * ~~~
+  */

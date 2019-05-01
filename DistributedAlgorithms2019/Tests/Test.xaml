@@ -1,0 +1,15 @@
+﻿<Window x:Class="DistributedAlgorithms.Test"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Test" Height="300" Width="300">
+    <StackPanel x:Name="StackPannel_Main">
+        <Button x:Name="Button_OpenWordDocument" Content="Open Word Document" Click="Button_OpenWordDocument_Click"  Height="30"></Button>
+        <Button x:Name="Button_CloseWordDocument" Content="Close Word Document" Click="Button_CloseWordDocument_Click"  Height="30"></Button>
+        <Button x:Name="Button_UpdateTOC" Content="Update table of content" Click="Button_TOC_Click"  Height="30"></Button>
+        <Button x:Name="Button_EnumsType" Content="Enum type" Click="Button_EnumType_Click"  Height="30"></Button>
+        <Button x:Name="Button_GridView" Content="GridView" Click="Button_GridView_Click"  Height="30"></Button>
+        <Button x:Name="Button_DisableTest" Content="DisableTest" Click="Button_DisableTest_Click"  Height="30"></Button>
+        <TextBox x:Name="TextBox_DisableTest" LostFocus="Button_DisableTest_LostFocus"></TextBox>
+        <TextBox x:Name="TextBox_Dummy" ></TextBox>
+    </StackPanel>
+</Window>

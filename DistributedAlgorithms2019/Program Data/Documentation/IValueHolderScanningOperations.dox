@@ -1,0 +1,42 @@
+﻿
+/*! \page DeepCopy DeepCopy of an IValueHolder 
+ * ## Introduction
+ * - The DeepCopy create a duplication of an IValueHolder
+ *
+ * ## Activation	
+ * <target IValueHolder>.DeepCopy(<source IValueHolder>)
+ */
+
+ /*! \page CheckingIValueHolder Checks the IvalueHolder 
+ * ## Introduction
+ *
+ * ### Members check
+ * #### The checks
+ * - Check if the members are consistemt
+ * - The network of all the tree has to be the same
+ * - The permissions are determined according to the AttributeDictionary of the NetworkElement which is part of the network
+ * - The parent has to be the parent in the tree
+ *	
+ * #### Activation
+ *
+ * ~~~{.cs}
+ * // For NetworkElement (public method of NetworkElement)
+ * networkElement.checkMembers(checkName);
+ * // For other IValueHolders (static method of ValueHolder)
+ * ValueHolder.checkMembers()
+ * ~~~
+ * There is also a check button in the ElementWindow
+ *
+ * ### EqualsTo
+ * #### The checks
+ * - The values of all the trees are equal between the 2 IValuHolders
+ * - There is also a parameter that checks that each 2 objects are not the same object 
+ *
+ * #### Activation
+ * ~~~{.cs}	
+ * // Static method of ValueHolder
+ * ValueHolder.EqualsTo()
+ * ~~~
+ */
+
+ 

@@ -1,0 +1,21 @@
+﻿<Window x:Class="DistributedAlgorithms.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MessageWindow" SizeToContent="WidthAndHeight" Closing="OnClosing">
+    <Grid>
+        <DockPanel>
+            <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="5,5">
+                <DockPanel Height="50" DockPanel.Dock="Top" HorizontalAlignment="Left">
+                    <Button x:Name="Button_Reset" Content="Reset" DockPanel.Dock="Left" Margin="5" Click="Button_Reset_Click" />
+                    <Button x:Name="Button_Filter_And" Content="And Filter" DockPanel.Dock="Left" Margin="5" Click="Button_Filter_And_Click" />
+                    <Button x:Name="Button_Filter_Or" Content="Or Filter" DockPanel.Dock="Left" Margin="5" Click="Button_Filter_Or_Click" />
+                    <Button x:Name="Button_PresentedSources_List" Content="Create Presented Sources List" DockPanel.Dock="Left" Margin="5" Click="Button_PresentedSources_List_Click" />
+                    <Button x:Name="Button_CancelPresentedSourcesFilter_List" Content="Cancel Presented Sources Filter" DockPanel.Dock="Left" Margin="5" Click="Button_CancelPresentedSourcesFilter_Click" />
+                </DockPanel>
+            </Border>
+            <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="5,5">
+                <ListBox x:Name="ListBox_Messages" HorizontalAlignment="Left" Height="480" VerticalAlignment="Top" Width="980" Margin="5"/>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>

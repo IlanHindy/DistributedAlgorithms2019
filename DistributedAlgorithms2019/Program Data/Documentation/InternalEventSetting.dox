@@ -1,0 +1,36 @@
+﻿ /*! \page settingInternalEvents  Setting Internal Events
+  *  The internal events are methods in the process class that are activated if the process
+  *	 is in a certain state
+  * ## The internal event generating mechanism
+  * - For each internal event a record that describe the event is generated
+  * - The data is divided to 2 parts
+  *		- The conditions for the event to occur 
+  *		- List of methods to be activated when the event occur
+  *
+  * ## Adding Internal Events
+  * ### Writing the methods
+  * For each action that should be activated as event trigger action write a method with the
+  * prototype of the method __DefaultInternalEventHandler()__ found in the process class
+  * ### Using the GUI
+  * The Internal events are found in the __OperationalParameters__ dictionary of the process
+  * ### Inside the code
+  * In order to add an event
+  * - Look for the method __InitInternalEvents()__ in the process
+  *	- For each event you want to create call the method __InsertInternalEvent()__
+  *       (See the comment of InitInternalEvent for the prototype of the method)
+  *
+  * ## Structure of Internal Events
+  * These are events that their activation is handled automatically
+  * - For an event to be activated there has to be conditions : 
+  *		- __Trigger__ : An EventTriggerType stating the action of the processor when the event is checked
+  *		- __Round__ : The round in the message that it's sent or receive caused the trigger 
+  *		- __MessageType__ : The type of the message that it's sent or receive caused the trigger 
+  *		- __OtherEnd__ : The other end of the message that it's sent or receive caused the trigger (sending processor for receive events and destination processors for sending events)
+  *	- A list of the methods to be activated when the event hit
+  *
+  * ## Observe the implementation
+  * -	DistributedAlgorithms.InternalEventsHandler
+  *	-	DistributedAlgorithms.InternalEvents
+  *	-	DistributedAlgorithms.EventTrigger
+  *
+  */

@@ -1,0 +1,35 @@
+﻿ /*! \page settingBaseAlgorithm  Setting Base Algorithm
+  *   The base algorithm is the application algorithm that runs on the processes 
+  * ## The base algorithm generating mechanism
+  * - For each sending of a message a record that describe the sending is created
+  * - The sending description is divided to 2 parts
+  *		- The conditions for the message to be sent (The event)
+  *		- Message generating parameters
+  *
+  * ## Adding Base Algorithm messages
+  * ### Using the GUI
+  * The Base Algorithm messages sending are found in the __OperationalParameters__ dictionary of the process
+  * ### Inside the code
+  * In order to add an event
+  * - Look for the method __InitBaseAlgorithm()__
+  *	- For each group of messages you want to send call the method __InsertBaseAlgorithmEvent()__
+  *       (See the comment of InitBaseAlgorithmData for the prototype of the method)
+  *
+  * ## Structure of Base Algorithm Events
+  * - For a send to occur there has to be following conditions : 
+  *		- __Trigger__ : An EventTriggerType stating the action of the processor when the event is checked
+  *		- __Round__ : The round in the message that it's sent or receive caused the trigger 
+  *		- __MessageType__ : The type of the message that it's sent or receive caused the trigger  
+  *		- __OtherEnd__ : The other end of the message it's sent or receive caused the trigger (sending processor for receive events and destination processors for sending events)
+  *	- For each message that will be sent the following parameters has to be entered
+  *		- __Type__ : The message type (from the algorithm's Message class MessageTypes enum)
+  *		- __Name__ : The message name ( a string)
+  *		- __Field__ : An AttributeDictionary with the field of the message
+  *		- __Targets__ : An AttributeList with the ids of the processors that are the destinations of the message
+  *
+  * ## Observe the implementation
+  * -	DistributedAlgorithms.BaseAlgorithmHandler
+  *	-	DistributedAlgorithms.BaseAlgorithmMessages
+  *	-	DistributedAlgorithms.EventTrigger
+  *
+  */

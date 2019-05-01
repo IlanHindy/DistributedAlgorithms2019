@@ -1,0 +1,631 @@
+﻿<Window x:Class="DistributedAlgorithms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" SizeToContent="WidthAndHeight" MaxHeight="800" MaxWidth="1200" Closing="Window_Close" >
+    <!--
+    In order to add operation:
+    1. Add a command to Window.Resources
+    2. Add the command to Window.CommandBindings
+    3. If the command needs a shortcut key add the command to Window.InputBindings
+    4. Add the command to Menue
+    5. Add the button for the command to the buttons
+    -->
+    <Window.Resources>
+        <!-- File menue commands-->
+        <RoutedUICommand x:Key="ResetNetwork" Text="ResetNetwork"  />
+        <RoutedUICommand x:Key="New" Text="New" />
+        <RoutedUICommand x:Key="Open" Text="Open" />
+        <RoutedUICommand x:Key="ReOpen" Text="ReOpen" />        
+        <RoutedUICommand x:Key="Debug" Text="Debug" />
+        <RoutedUICommand x:Key="Save" Text="Save" />
+        <RoutedUICommand x:Key="SaveAs" Text="SaveAs" />
+        <RoutedUICommand x:Key="SetLogFile" Text="SetLogFile" />
+        <RoutedUICommand x:Key="LogFiltersSetting" Text="LogFiltersSetting" />
+        <RoutedUICommand x:Key="Exit" Text="Exit" />
+
+        <!-- Build menue commands-->
+        <RoutedUICommand x:Key="EditNetwork" Text="EditNetwork" />
+        <RoutedUICommand x:Key="AddProcess" Text="AddProcess" />
+        <RoutedUICommand x:Key="EditProcess" Text="EditProcess" />
+        <RoutedUICommand x:Key="DeleteProcess" Text="DeleteProcess" />
+        <RoutedUICommand x:Key="ReIndexProcesses" Text="ReIndexProcesses" />
+        <RoutedUICommand x:Key="AddChannel" Text="AddChannel" />
+        <RoutedUICommand x:Key="EditChannel" Text="EditChannel" />
+        <RoutedUICommand x:Key="DeleteChannel" Text="DeleteChannel" />
+        <RoutedUICommand x:Key="ReIndexChannels" Text="ReIndexChannels" />
+        <RoutedUICommand x:Key="CheckNetwork" Text="CheckNetwork" />
+        <RoutedUICommand x:Key="CreateNetwork" Text="CreateNetwork" />
+        <RoutedUICommand x:Key="IncreaseWidth" Text="IncreaseWidth" />
+        <RoutedUICommand x:Key="DecreaseWidth" Text="DecreaseWidth" />
+        <RoutedUICommand x:Key="IncreaseHeight" Text="IncreaseHeight" />
+        <RoutedUICommand x:Key="DecreaseHeight" Text="DecreaseHeight" />
+        
+        <!-- Run menu commands -->
+        <RoutedUICommand x:Key="Breakpoints" Text="Breakpoints" />
+        <RoutedUICommand x:Key="RunToEnd" Text="RunToEnd" />
+        <RoutedUICommand x:Key="SingleStepAll" Text="SingleStepAll" />
+        <RoutedUICommand x:Key="InitializeRunning" Text="InitializeRunning" />
+        <RoutedUICommand x:Key="SaveCurrentStatus" Text="SaveCurrentStatus" />
+        <RoutedUICommand x:Key="Terminate" Text="Terminate" />
+        <RoutedUICommand x:Key="ShowBreakpoints" Text="ShowBreakpoints" />
+        <RoutedUICommand x:Key="ShowFloatingSummary" Text="ShowFloatingSummary" />
+        <RoutedUICommand x:Key="ShowMessages" Text="ShowMessages" />
+
+        <!-- Documentation menu items-->
+        <RoutedUICommand x:Key="OpenAlgorithmDocumentation" Text="OpenAlgorithmDocumentation" />
+        <RoutedUICommand x:Key="OpenAlgorithmPseudoCode" Text="OpenAlgorithmPseudoCode" />
+        <RoutedUICommand x:Key="OpenProgramDocumentation" Text="OpenProgramDocumentation" />
+        <RoutedUICommand x:Key="CreateDocumentation" Text="CreateDocumentation" />
+
+        <!-- Program Data menu items-->
+        <RoutedUICommand x:Key="BaseAlgorithm" Text="BaseAlgorithm" />
+        <RoutedUICommand x:Key="AddOrUpdateAlgorithm" Text="AddOrUpdateAlgorithm" />
+        <RoutedUICommand x:Key="EditConfiguration" Text="EditConfigutration" />
+        
+        <!-- Checks menu items-->
+        <RoutedUICommand x:Key="CheckDeepCopy" Text="CheckDeepCopy" />
+        <RoutedUICommand x:Key="CheckDictionaryDeepCopy" Text="CheckDictionaryDeepCopy" />
+        <RoutedUICommand x:Key="CheckFileSelect" Text="CheckFileSelect" />
+        <RoutedUICommand x:Key="CheckDataGrid" Text="CheckDataGrid" />
+        <!-- <RoutedUICommand x:Key="CheckListMerge" Text="CheckListMerge" /> -->
+        <RoutedUICommand x:Key="CheckMembers" Text="CheckMembers" />
+        
+        <!-- Other buttons -->
+        <RoutedUICommand x:Key="ShowChannelPresentation" Text="Show Channel Presentation" />
+        
+        <!-- Icons -->
+        <!-- File Menu icos -->
+        <BitmapImage x:Key="Icon_ResetNetwork" UriSource="/Icons/ResetNetwork_icon.png" />
+        <BitmapImage x:Key="Icon_New" UriSource="/Icons/New_icon.png" />
+        <BitmapImage x:Key="Icon_Open" UriSource="/Icons/Open_icon.png" />
+        <BitmapImage x:Key="Icon_ReOpen" UriSource="/Icons/ReOpen_icon.png" />
+        <BitmapImage x:Key="Icon_Debug" UriSource="/Icons/Debug_icon.png" />
+        <BitmapImage x:Key="Icon_Save" UriSource="/Icons/Save_icon.png" />
+        <BitmapImage x:Key="Icon_SaveAs" UriSource="/Icons/SaveAs_icon.png" />
+        <BitmapImage x:Key="Icon_SetFiles" UriSource="/Icons/SetFiles_icon.png" />
+        <BitmapImage x:Key="Icon_LogFilters" UriSource="/Icons/LogFilters_icon.png" />
+        <BitmapImage x:Key="Icon_Exit" UriSource="/Icons/Exit_icon.png" />
+        
+        <!-- Build network icons -->
+        <BitmapImage x:Key="Icon_EditNetwork" UriSource="/Icons/EditNetwork_icon.png" />
+        <BitmapImage x:Key="Icon_AddProcess" UriSource="/Icons/AddProcess_icon.png" />
+        <BitmapImage x:Key="Icon_DeleteProcess" UriSource="/Icons/DeleteProcess_icon.png" />
+        <BitmapImage x:Key="Icon_EditProcess" UriSource="/Icons/EditProcess_icon.png" />
+        <BitmapImage x:Key="Icon_ReIndexProcess" UriSource="/Icons/ReindexProcess_icon.png" />
+        <BitmapImage x:Key="Icon_AddChannel" UriSource="/Icons/AddChannel_icon.png" />
+        <BitmapImage x:Key="Icon_DeleteChannel" UriSource="/Icons/DeleteChannel_icon.png" />
+        <BitmapImage x:Key="Icon_EditChannel" UriSource="/Icons/EditChannel_icon.png" />
+        <BitmapImage x:Key="Icon_ReIndexChannels" UriSource="/Icons/ReindexChannels_icon.png" />
+        <BitmapImage x:Key="Icon_CheckNetwork" UriSource="/Icons/CheckNetwork_icon.png" />
+        <BitmapImage x:Key="Icon_CreateNetwork" UriSource="/Icons/CreateNetwork_icon.png" />
+        <BitmapImage x:Key="Icon_IncreaseCanvasWidth" UriSource="/Icons/IncreaseCanvasWidth_icon.png" />
+        <BitmapImage x:Key="Icon_DecreaseCanvasWidth" UriSource="/Icons/DecreaseCanvasWidth_icon.png" />
+        <BitmapImage x:Key="Icon_IncreaseCanvasHeight" UriSource="/Icons/IncreaseCanvasHeight_icon.png" />
+        <BitmapImage x:Key="Icon_DecreaseCanvasHeight" UriSource="/Icons/DecreaseCanvasHeight_icon.png" />
+        
+        <!-- Run Icons -->
+        <BitmapImage x:Key="Icon_Breakpoints" UriSource="/Icons/Breakpoints_icon.png" />
+        <BitmapImage x:Key="Icon_Run" UriSource="/Icons/Run_icon.png" />
+        <BitmapImage x:Key="Icon_SingleStepAll" UriSource="/Icons/SingleStepAll_icon.png" />
+        <BitmapImage x:Key="Icon_InitializeRunning" UriSource="/Icons/InitializeRunning_icon.png" />
+        <BitmapImage x:Key="Icon_SaveCurrentStatus" UriSource="/Icons/SaveCurrentStatus_icon.png" />
+        <BitmapImage x:Key="Icon_Terminate" UriSource="/Icons/Terminate_icon.png" />
+
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <!-- File menu commands -->
+        <CommandBinding Command="{StaticResource ResetNetwork}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_ResetNetwork" />
+        <CommandBinding Command="{StaticResource New}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_New" />
+        <CommandBinding Command="{StaticResource Open}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_Open" />
+        <CommandBinding Command="{StaticResource ReOpen}" CanExecute="Command_CanExecute_IfLastInitWasLoad" Executed="Command_ReOpen" />
+        <CommandBinding Command="{StaticResource Debug}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_Debug" />        
+        <CommandBinding Command="{StaticResource Save}" CanExecute="Command_CanExecute_IfSaveNeeded" Executed="Command_Save" />
+        <CommandBinding Command="{StaticResource SaveAs}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_SaveAs" />
+        <CommandBinding Command="{StaticResource SetLogFile}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_SetLogFile" />
+        <CommandBinding Command="{StaticResource LogFiltersSetting}" CanExecute="Command_CanExecute_IfNotInit" Executed="Command_LogFiltersSetting" />
+        <CommandBinding Command="{StaticResource Exit}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_Exit" />
+        
+        <!--Build menu commands -->
+        <CommandBinding Command="{StaticResource EditNetwork}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_EditNetwork" />
+        <CommandBinding Command="{StaticResource AddProcess}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_AddProcess" />
+        <CommandBinding Command="{StaticResource EditProcess}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_EditProcess" />
+        <CommandBinding Command="{StaticResource DeleteProcess}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_DeleteProcess" />
+        <CommandBinding Command="{StaticResource ReIndexProcesses}" CanExecute="Command_CanExecute_ReIndexNeeded" Executed="Command_ReIndexProcesses" />
+        <CommandBinding Command="{StaticResource AddChannel}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_AddChannel" />
+        <CommandBinding Command="{StaticResource EditChannel}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_EditChannel" />
+        <CommandBinding Command="{StaticResource DeleteChannel}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_DeleteChannel" />
+        <CommandBinding Command="{StaticResource ReIndexChannels}" CanExecute="Command_CanExecute_ReIndexNeeded" Executed="Command_ReIndexChannels" />
+        <CommandBinding Command="{StaticResource CheckNetwork}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_CheckNetwork" />
+        <CommandBinding Command="{StaticResource CreateNetwork}" CanExecute="Command_CanExecute_IfChecked" Executed="Command_CreateNetwork" />
+        <CommandBinding Command="{StaticResource IncreaseWidth}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_IncreaseWidth" />
+        <CommandBinding Command="{StaticResource DecreaseWidth}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_DecreaseWidth" />
+        <CommandBinding Command="{StaticResource IncreaseHeight}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_IncreaseHeight" />
+        <CommandBinding Command="{StaticResource DecreaseHeight}" CanExecute="Command_CanExecute_IfNotRunningOrInit" Executed="Command_DecreaseHeight" />
+        
+        <!-- Run menue items -->
+        <CommandBinding Command="{StaticResource Breakpoints}" CanExecute="Command_CanExecute_IfCreated" Executed="Command_Breakpoints" />
+        <CommandBinding Command="{StaticResource RunToEnd}" CanExecute="Command_CanExecute_IfCreatedOrRunning" Executed="Command_RunToEnd" />
+        <CommandBinding Command="{StaticResource SingleStepAll}" CanExecute="Command_CanExecute_IfCreatedOrRunning" Executed="Command_SingleStepAll" />
+        <CommandBinding Command="{StaticResource InitializeRunning}" CanExecute="Command_CanExecute_IfCreated" Executed="Command_InitializeRunning" />
+        <CommandBinding Command="{StaticResource SaveCurrentStatus}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_SaveCurrentStatus" />
+        <CommandBinding Command="{StaticResource Terminate}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_Terminate" />
+        <CommandBinding Command="{StaticResource ShowBreakpoints}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_ShowBreakpoints" />
+        <CommandBinding Command="{StaticResource ShowFloatingSummary}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_ShowFloatingSummary" />
+        <CommandBinding Command="{StaticResource ShowMessages}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_ShowMessages" />
+        
+        <!-- Program Data -->
+        <CommandBinding Command="{StaticResource BaseAlgorithm}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_BaseAlgorithm" />
+        <CommandBinding Command="{StaticResource AddOrUpdateAlgorithm}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_AddAlgorithm" />
+        <CommandBinding Command="{StaticResource EditConfiguration}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_EditConfiguration" />
+        
+        <!-- Documentation Menu -->
+        <CommandBinding Command="{StaticResource OpenAlgorithmDocumentation}" Executed="Command_OpenAlgorithmDocumentation" />
+        <CommandBinding Command="{StaticResource OpenAlgorithmPseudoCode}" Executed="Command_OpenAlgorithmPseudoCode" />
+        <CommandBinding Command="{StaticResource OpenProgramDocumentation}" Executed="Command_OpenProgramDocumentation" />
+        <CommandBinding Command="{StaticResource CreateDocumentation}" Executed="Command_CreateDocumentation" />
+
+        <!-- Checks menu items-->
+        <CommandBinding Command="{StaticResource CheckDeepCopy}" Executed="Command_CheckDeepCopy" />
+        <CommandBinding Command="{StaticResource CheckDictionaryDeepCopy}" Executed="Command_CheckDictionaryDeepCopy" />
+        <CommandBinding Command="{StaticResource CheckFileSelect}" Executed="Command_CheckFileSelect" />
+        <CommandBinding Command="{StaticResource CheckDataGrid}" Executed="Command_CheckDataGrid" />
+        <!--<CommandBinding Command="{StaticResource CheckListMerge}" Executed="Command_CheckListMerge" /> -->
+        <CommandBinding Command="{StaticResource CheckMembers}" Executed="Command_CheckMembers" />
+
+        <!-- Other buttons-->
+        <CommandBinding Command="{StaticResource ShowChannelPresentation}" CanExecute="Command_CanExecute_IfNotInit" Executed="Command_ShowChanelPresentation" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <!-- File menu commands-->
+        <KeyBinding Key="R" Modifiers="Control" Command="{StaticResource ResetNetwork}" />
+        <KeyBinding Key="N" Modifiers="Control" Command="{StaticResource New}" />
+        <KeyBinding Key="O" Modifiers="Control"  Command="{StaticResource Open}" />
+        <KeyBinding Key="O" Modifiers="Control + Shift" Command="{StaticResource ReOpen}" />
+        <KeyBinding Key="D" Modifiers="Control" Command="{StaticResource Debug}" />
+        <KeyBinding Key="S" Modifiers="Control"  Command="{StaticResource Save}" />
+        <KeyBinding Key="S" Modifiers="Control + Shift" Command="{StaticResource SaveAs}" />
+        <KeyBinding Key="L" Modifiers="Control"  Command="{StaticResource SetLogFile}" />
+    </Window.InputBindings>
+
+    <DockPanel x:Name="DockPanel_main" LastChildFill="True" Margin="0,1,0,-1">
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="5,5">
+            <Menu Margin="5" Background="White">
+                <!-- File menu commands -->
+                <MenuItem Header="File">
+                    <MenuItem Command="{StaticResource ResetNetwork}" Header="Reset">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_ResetNetwork}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                <MenuItem Header="New      Ctrl-N" Command="{StaticResource New}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_New}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Open      Ctrl-O" Command="{StaticResource Open}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Open}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ReOpen    Ctrl-Shift-O" Command="{StaticResource ReOpen}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_ReOpen}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Debug     Ctrl-D" Command="{StaticResource Debug}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Debug}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Save      Ctrl-S" Command="{StaticResource Save}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Save}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Save As   Ctrl-Shift-S" Command="{StaticResource SaveAs}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_SaveAs}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Set Log Files Ctrl-L" Command="{StaticResource SetLogFile}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_SetFiles}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Log Filters Setting" Command="{StaticResource LogFiltersSetting}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_LogFilters}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Exit" Command="{StaticResource Exit}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Exit}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                
+                <!-- Build menu commands-->
+                <MenuItem Header="Build">
+                    <MenuItem Header="Edit Network" Command="{StaticResource EditNetwork}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_EditNetwork}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Add Process" Command="{StaticResource AddProcess}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_AddProcess}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Edit Process" Command="{StaticResource EditProcess}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_EditProcess}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Delete Process" Command="{StaticResource DeleteProcess}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_DeleteProcess}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ReIndex Processes" Command="{StaticResource ReIndexProcesses}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_ReIndexProcess}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Add Channel" Command="{StaticResource AddChannel}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_AddChannel}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Edit Channel" Command="{StaticResource EditChannel}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_EditChannel}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Delete Channel" Command="{StaticResource DeleteChannel}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_DeleteChannel}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ReIndex Channels" Command="{StaticResource ReIndexChannels}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_ReIndexChannels}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Check Network" Command="{StaticResource CheckNetwork}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_CheckNetwork}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Create Network" Command="{StaticResource CreateNetwork}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_CreateNetwork}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Increase Width" Command="{StaticResource IncreaseWidth}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_IncreaseCanvasWidth}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Decrease Width" Command="{StaticResource DecreaseWidth}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_DecreaseCanvasWidth}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Increase Height" Command="{StaticResource IncreaseHeight}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_IncreaseCanvasHeight}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Decrease Height" Command="{StaticResource DecreaseHeight}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_DecreaseCanvasHeight}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                
+                <!-- Run menu items -->
+                <MenuItem Header="Run">
+                    <MenuItem Header="Breakpoints" Command="{StaticResource Breakpoints}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Breakpoints}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Run To End" Command="{StaticResource RunToEnd}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Run}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Single Step All" Command="{StaticResource SingleStepAll}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_SingleStepAll}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Initialize Running" Command="{StaticResource InitializeRunning}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_InitializeRunning}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Save Current Status" Command="{StaticResource SaveCurrentStatus}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_SaveCurrentStatus}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Terminate" Command="{StaticResource Terminate}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Icon_Terminate}" Style="{StaticResource MenueItemImage}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Show Breakpoints" Command="{StaticResource ShowBreakpoints}"/>
+                    <MenuItem Header="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}"/>
+                </MenuItem>
+                <MenuItem Header="Program">
+                    <MenuItem Header="Base Algorithm" Command="{StaticResource BaseAlgorithm}"/>
+                    <MenuItem Header="Add\Update Algorithm" Command="{StaticResource AddOrUpdateAlgorithm}"/>
+                    <MenuItem Header="Edit Configuration" Command="{StaticResource EditConfiguration}"/>
+                </MenuItem>
+                <MenuItem Header="Documentation">
+                    <MenuItem Header="Algorithm Document " Command="{StaticResource OpenAlgorithmDocumentation}"/>
+                    <MenuItem Header="Algorithm Pseudo - code " Command="{StaticResource OpenAlgorithmPseudoCode}"/>
+                    <MenuItem Header="Program Documentation" Command="{StaticResource OpenProgramDocumentation}"/>
+                    <MenuItem Header="Create Algorithm Documentation" Command="{StaticResource CreateDocumentation}"/>
+                </MenuItem>
+                <MenuItem Header="Checks">
+                    <MenuItem Header="Network Check DeepCopy" Command="{StaticResource CheckDeepCopy}"/>
+                    <MenuItem Header="Dictionary DeepCopy" Command="{StaticResource CheckDictionaryDeepCopy}"/>
+                    <MenuItem Header="Check FileSelect" Command="{StaticResource CheckFileSelect}"/>
+                    <MenuItem Header="Check DataGrid" Command="{StaticResource CheckDataGrid}"/>
+                    <!--<MenuItem Header="Check ListMerge" Command="{StaticResource CheckListMerge}"/> -->
+                    <MenuItem Header="Check Members" Command="{StaticResource CheckMembers}"/>
+                </MenuItem>
+            </Menu>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="5,5">
+            <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                    <Grid x:Name ="Grid_Header"  DockPanel.Dock ="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Network Type : " Grid.Column="0" Grid.Row="0" Height="30" FontWeight="Bold" Padding="5,5,0,5" />
+                        <TextBlock x:Name="TextBlock_NetworkTypeName" Text="Network not loaded or initiated" Grid.Column="1" Grid.Row="0" Height="30" Padding="0,5,10,5"/>
+                        <TextBlock x:Name="TextBlock_NetworkHeader" Text="Network Name : " Grid.Column="2" Grid.Row="0" Height="30" FontWeight="Bold" Padding="5,5,10,5"/>
+                        <TextBlock x:Name="TextBlock_NetworkName" Text="" Grid.Column="3" Grid.Row="0" Height="30" Padding="0,5,10,5"/>
+                        <TextBlock x:Name="TextBlock_LoadFileHeader" Text="Data File Name : " Grid.Column="0" Grid.Row="1" Height="30" FontWeight="Bold" Padding="5,0,0,5"/>
+                        <TextBlock x:Name="TextBlock_LoadFileName" Text="Network not loaded from file" Grid.Column="1" Grid.Row="2" Height="30" Padding="0"/>
+                        <TextBlock Text="Log File : " Grid.Column="2" Grid.Row="1" Height="30" FontWeight="Bold" Padding="5,0,0,0"/>
+                        <TextBlock x:Name="TextBlock_LogFileName" Text="No log file was selected" Grid.Column="3" Grid.Row="1" Height="30" Padding="0"/>
+                    </Grid>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="5,5">
+            <Border.Style>
+                <Style>
+                    <Setter Property="Border.Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Visibility, ElementName=ToolBar_File}" Value="Collapsed" />
+                                <Condition Binding="{Binding Visibility, ElementName=ToolBar_Build}" Value="Collapsed" />
+                                <Condition Binding="{Binding Visibility, ElementName=ToolBar_Run}" Value="Collapsed" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Border.Visibility" Value="Collapsed"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel Margin="5">
+                <TextBox x:Name="TextBox_NewAlgorithm" Width="100"/>
+                <ToolBarTray DockPanel.Dock="Top" Background="White">
+                    <ToolBar x:Name="ToolBar_File" Background="White">
+                        <ToolBar.Style>
+                            <Style>
+                                <Setter Property="Control.Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Reset }" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_New}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Open}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_ReOpen}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Debug}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Save}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_SaveAs}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_SetLogFile}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_LogFiltersSetting}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Exit}" Value="false" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Control.Visibility" Value="Collapsed" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToolBar.Style>
+                        <Button x:Name="Button_Check" Content ="Check" Click="Button_Check_Click"/>
+                        <Button x:Name="Button_Tests" Content="Tests" Click="Button_Tests_Click" />
+                        <Button x:Name="Button_ResetNetwork" ToolTip="Reset Network" Command="{StaticResource ResetNetwork}" >
+              
+                            <Image Source="{StaticResource Icon_ResetNetwork }" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_New" ToolTip="Init Network" Command="{StaticResource New}">
+                            <Image Source="{StaticResource Icon_New}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_Open" ToolTip="Open Network from file" Command="{StaticResource Open}">
+                            <Image Source="{StaticResource Icon_Open}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_ReOpen" ToolTip="Re Open the network from the same file" Command="{StaticResource ReOpen}">
+                            <Image Source="{StaticResource Icon_ReOpen}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_Debug" ToolTip="Load a debug backup file and start debug" Command="{StaticResource Debug}">
+                            <Image Source="{StaticResource Icon_Debug}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_Save" ToolTip="Save Network" Command="{StaticResource Save}">
+                            <Image Source="{StaticResource Icon_Save}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_SaveAs" ToolTip="Save Network in different name" Command="{StaticResource SaveAs}">
+                            <Image Source="{StaticResource Icon_SaveAs}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_SetFiles" ToolTip="Set all file names" Command="{StaticResource SetLogFile}">
+                            <Image Source="{StaticResource Icon_SetFiles}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_LogFiltersSetting" ToolTip="Log Filters Setting" Command="{StaticResource LogFiltersSetting}">
+                            <Image Source="{StaticResource Icon_LogFilters}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_Exit" ToolTip="Exit" DockPanel.Dock="Top" Command="{StaticResource Exit}">
+                            <Image Source="{StaticResource Icon_Exit}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                    </ToolBar>
+                    <ToolBar x:Name="ToolBar_Build" Background="White">
+                        <ToolBar.Style>
+                            <Style>
+                                <Setter Property="Control.Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_EditNetwork}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_AddProcess}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_EditProcess}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_DeleteProcess}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_ReIndexProcesses}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_AddChannel}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_EditChannel}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_DeleteChannel}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_ReIndexChannels}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_IncreaseCanvasWidth}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_DecreaseCanvasWidth}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_IncreaseCanvasHeight}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_DecreaseCanvasHeight}" Value="false" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Control.Visibility" Value="Collapsed" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToolBar.Style>
+                        <Button x:Name="Button_EditNetwork" ToolTip="Edit Network" Command="{StaticResource EditNetwork}" >
+                            <Image Source="{StaticResource Icon_EditNetwork}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_AddProcess" ToolTip="Add Process" Command="{StaticResource AddProcess}">
+                            <Image Source="{StaticResource Icon_AddProcess}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_EditProcess" ToolTip="Edit Process" Command="{StaticResource EditProcess}">
+                            <Image Source="{StaticResource Icon_EditProcess}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_DeleteProcess" ToolTip="Delete Process" Command="{StaticResource DeleteProcess}">
+                            <Image Source="{StaticResource Icon_DeleteProcess}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_ReIndexProcesses" ToolTip="ReIndex Processes" Command="{StaticResource ReIndexProcesses}">
+                            <Image Source="{StaticResource Icon_ReIndexProcess}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_AddChannel" ToolTip="Add Channel" Command="{StaticResource AddChannel}">
+                            <Image Source="{StaticResource Icon_AddChannel}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>                        
+                        <Button x:Name="Button_EditChannel" ToolTip="Edit Channel" Command="{StaticResource EditChannel}">
+                            <Image Source="{StaticResource Icon_EditChannel}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_DeleteChannel" ToolTip="Delete Channel" Command="{StaticResource DeleteChannel}">
+                            <Image Source="{StaticResource Icon_DeleteChannel}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_ReIndexChannels" ToolTip="ReIndex Channels" Command="{StaticResource ReIndexChannels}">
+                            <Image Source="{StaticResource Icon_ReIndexChannels}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_CheckNetwork" ToolTip="Check Network" DockPanel.Dock="Top" Command="{StaticResource CheckNetwork}">
+                            <Image Source="{StaticResource Icon_CheckNetwork}" Style="{StaticResource ToolBarImage}"/>
+                        </Button> 
+                        <Button x:Name="Button_Create" ToolTip="Create Network" DockPanel.Dock="Top" Command="{StaticResource CreateNetwork}">
+                            <Image Source="{StaticResource Icon_CreateNetwork}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_IncreaseCanvasWidth" ToolTip="Width + 100" Command="{StaticResource IncreaseWidth}">
+                            <Image Source="{StaticResource Icon_IncreaseCanvasWidth}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_DecreaseCanvasWidth" ToolTip="Width - 100" Command="{StaticResource DecreaseWidth}">
+                            <Image Source="{StaticResource Icon_DecreaseCanvasWidth}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_IncreaseCanvasHeight" ToolTip="Height + 100" Command="{StaticResource IncreaseHeight}">
+                            <Image Source="{StaticResource Icon_IncreaseCanvasHeight}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_DecreaseCanvasHeight" ToolTip="Height - 100" Command="{StaticResource DecreaseHeight}">
+                            <Image Source="{StaticResource Icon_DecreaseCanvasHeight}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                    </ToolBar>
+                </ToolBarTray>
+                <ToolBarTray DockPanel.Dock="Bottom" >
+                    <ToolBar x:Name="ToolBar_Run" Background="White">
+                        <ToolBar.Style>
+                            <Style>
+                                <Setter Property="Control.Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Breakpoints}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_RunToEnd}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_SingleStepAll}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_InitializeRunning}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_SaveCurrentStatus}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_Terminate}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_ShowBreakpoints}" Value="false" />
+                                            <Condition Binding="{Binding IsEnabled, ElementName=Button_ShowFloatingSummary}" Value="false" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Control.Visibility" Value="Collapsed" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToolBar.Style>
+                        <Button x:Name="Button_Breakpoints" ToolTip="Set Breakpoints before running" Command="{StaticResource Breakpoints}">
+                            <Image Source="{StaticResource Icon_Breakpoints}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_RunToEnd" ToolTip="Run To End" Command="{StaticResource RunToEnd}">
+                            <Image Source="{StaticResource Icon_Run}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_SingleStepAll" ToolTip="Single Step All" Command="{StaticResource SingleStepAll}">
+                            <Image Source="{StaticResource Icon_SingleStepAll}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_InitializeRunning" ToolTip="Initialize Running without activating" Command="{StaticResource InitializeRunning}">
+                            <Image Source="{StaticResource Icon_InitializeRunning}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_SaveCurrentStatus" ToolTip="Save Current Status" Command="{StaticResource SaveCurrentStatus}">
+                            <Image Source="{StaticResource Icon_SaveCurrentStatus}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_Terminate" ToolTip="Terminate" Command="{StaticResource Terminate}">
+                            <Image Source="{StaticResource Icon_Terminate}" Style="{StaticResource ToolBarImage}"/>
+                        </Button>
+                        <Button x:Name="Button_ShowBreakpoints" Content="Show Breakpoints" ToolTip="Show Breakpoints" Command="{StaticResource ShowBreakpoints}"/>
+                        <Button x:Name="Button_ShowFloatingSummary" Content="Show Floating Summary" ToolTip="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}"/>
+                        <Button x:Name="Button_ShowMessages" Content="Show messages" ToolTip="Show Messages" Command="{StaticResource ShowMessages}"/>
+                    </ToolBar>
+                </ToolBarTray>                
+            </DockPanel>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" Margin="5,5" Height ="100" DockPanel.Dock="Bottom">
+            <ScrollViewer x:Name="ScrollViewer_EditOperations" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <ListBox x:Name="listBox_OperationsLog" />
+            </ScrollViewer>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Left" Margin="5,5">
+            <DockPanel  LastChildFill="False" DockPanel.Dock="Left" VerticalAlignment="Center">
+                <Label  Content="Process List" FontWeight="Bold" Margin="5,0, 10,0"  Width="200" DockPanel.Dock="Top" />
+                <ListBox x:Name="ListBox_Processes" Width="200" Height="200" DockPanel.Dock="Top" Margin="5"   SelectionChanged="ListBox_Processes_SelectionChanged"/>
+                <Label Content="Channels List" FontWeight="Bold" Margin="5, 0, 5, 0"  Width="200" DockPanel.Dock="Top" />
+                <ListBox x:Name="ListBox_Channels" Width="200" Height="200" DockPanel.Dock="Top" Margin="5" SelectionChanged="ListBox_Channels_SelectionChanged"/>
+                <Button x:Name="Button_ShowChannelPresentation" Content="Show Channels Presentation" Width="200" Height="30" Margin="5" Command="{StaticResource ShowChannelPresentation}" />
+            </DockPanel>
+        </Border>
+        <Border CornerRadius="6" BorderBrush="Black" BorderThickness="1" Margin="5,5">
+            <ScrollViewer  x:Name="ScrollViewer_canvas" HorizontalScrollBarVisibility="Auto" Margin="5,5">
+            <Canvas x:Name="Canvas_Draw" />
+            </ScrollViewer>
+        </Border>       
+    </DockPanel>
+</Window>

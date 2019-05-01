@@ -1,0 +1,322 @@
+﻿<Variables>
+  <!--
+		AutoDoc rules
+		=============
+
+		For each documentation entry that needs to be generated, Atomineer executes an appropriate
+		section of the rules in this AutoDoc section (e.g. for a parameter, the <Parameters> section
+		is executed). Execution stops when a match is found and a documentation result is returned.
+
+		Full documentation can be found in the Atomineer user manual.
+		-->
+			<!-- Rules used for variables
+
+				 Full documentation can be found in the Atomineer user manual.
+
+				 Note that you can delete all the examples, and as long as this section does not
+				 end with a <Set> command, Atomineer will "fall through" your custom rules and 
+				 use its defaults if your rules do not supply any documentation text.
+
+				 Additional values that can be used for filtering/documenting include:
+					name			The name of the parameter
+					namenp			The name of the parameter, with known prefixes removed
+					sName			The name of the parameter, converted to sentence (space separated words) format, with abbreviated words expanded
+					specialType		Extra info on the variable: normal, override
+					type			The type of the parameter (const int*). For enum members, the type "enum" is used.
+					typeBase		The type of the parameter, not including any modifiers (int)
+					index			The 1-based index of the parameter within the method's parameter list
+					word1			The first word of the parameter (often used for prefixes, e.g. m_, lpsz, etc)
+					coreName		The name with the first word removed (to allow processing of prefixed names)
+					isPointer		"y" or "n", indicating if the parameter type includes a "*" or "^"
+					isReference		"y" or "n", indicating if the parameter type includes an "&" or "ref"
+					isEvent			"y" or "n", indicating if the variable is an event declaration
+			 -->
+
+			<!-- Events are commented as "variables" but can in fact be overrides of base class
+				 events or implementations of interface events. If this is an overide and the special
+				 'docOverridesWithSee' flag is set, we don't use the standard documentation generation
+				 approach, but instead substitute a <see> reference. Note that you also need to disable
+				 duplication of base documentation in the preferences to allow this rule to be applied
+				 for overrides.
+			-->
+			<If specialType="override" docOverridesWithSee="true">
+				<IfNot baseClass="unknown">
+					<Set desc="See &lt;see cref=&quot;%baseClassRef%.%name%&quot;/&gt;" />
+				</IfNot>
+			</If>
+
+			<If type="DependencyProperty">
+				<Set continue="yes" desc="A Dependency Property for " />
+				<If name="#DependencyProperty,#Property" desc="the %match% property" />
+			</If>
+
+			<!-- Trap names like "oldName" to avoid them being documented as "name of the old" -->
+			<If sName="old *,new *" desc=" (%type%) - The %SName:LCase%" />
+
+			<If isEvent="y">
+				<If stylecop="true">
+					<If sName="# Event" desc=" (%type%) - Occurs when %namenp:StripLastWord:Sentence%." />
+					<Set desc="(%type%) Occurs when %namenp::Sentence%." />
+				</If>
+
+				<If sName="# Event" desc=" (%type%) - Event queue for all listeners interested in %namenp:StripLastWord% events." />
+				<Set desc=" (%type%) - Event queue for all listeners interested in %namenp% events." />
+			</If>
+
+			<!-- Enumerated type (values) members -->
+			<If type="enum" desc=" (%type%) - An enum constant representing the %sName% option" />
+
+			<!-- Enumerated type (bitfield) members -->
+			<If type="bitfield" desc=" (%type%) - A binary constant representing the %sName% flag" />
+
+			<If type="bool,boolean,system.boolean">
+				<If sName="is #,has #,can #" desc=" (%type%) - %true% if this %object% %sName:LCase%" />
+				<If sName="are #,should #" desc=" (%type%) - %true% if %sName:LCase%" />
+				<If sName="# is #,# has #,# are #,# can #,# should #" desc=" (%type%) -  %true% if %sName:LCase%" />
+				<If sname="show,visible" desc=" (%type%) - %true% to show, %false% to hide" />
+				<If sname="show #,# visible" desc=" (%type%) - %true% to show, %false% to hide the %match:Sentence:LCase%" />
+				<If sname="hide,hidden" desc=" (%type%) - %true% to hide, %false% to show" />
+				<If sname="hide #,# hidden" desc=" (%type%) - %true% to hide, %false% to show the %match:Sentence:LCase%" />
+
+				<If sname="enable,enabled" desc=" (%type%) - %true% to enable, %false% to disable" />
+				<If sname="enable #,# enabled,# on" desc=" (%type%) - %true% to enable, %false% to disable the %match:Sentence:LCase%" />
+				<If sname="disable,disabled" desc="( %type%) - %true% to disable, %false% to enable" />
+				<If sname="disable #,# disabled,# off" desc=" (%type%) - %true% to disable, %false% to enable the %match:Sentence:LCase%" />
+
+				<If sname="lock,locked" desc="%true% to lock, %false% to unlock" />
+				<If sname="# lock,lock #,# locked" desc=" (%type%) - %true% to lock, %false% to unlock the %match:Sentence:LCase%" />
+				<If sname="unlock,unlocked" desc=" (%type%) - %true% to unlock, %false% to lock" />
+				<If sname="unlock #,# unlocked" desc=" (%type%) - %true% to unlock, %false% to lock the %match:Sentence:LCase%" />
+
+				<If sname="allow #,# allowed" desc=" (%type%) - %true% to allow, %false% to deny %match:Sentence:LCase%" />
+				<If sname="grant #,# granted" desc=" (%type%) - %true% to allow, %false% to deny %match:Sentence:LCase%" />
+				<If sname="deny #,# denied" desc=" (%type%) - %true% to deny, %false% to allow %match:Sentence:LCase%" />
+
+				<If sname="include,included" desc=" (%type%) - %true% to include, %false% to exclude" />
+				<If sname="include #,# included" desc=" (%type%) - %true% to include, %false% to exclude the %match:Sentence:LCase%" />
+				<If sname="exclude,excluded" desc=" (%type%) - %true% to exclude, %false% to include" />
+				<If sname="exclude #,# excluded" desc=" (%type%) - %true% to exclude, %false% to include the %match:Sentence:LCase%" />
+
+				<If sname="automatic #" desc=" (%type%) - %true% to automatically %match:Sentence:LCase%" />
+
+				<If sname="promote #,# promoted" desc=" (%type%) - %true% to promote, %false% to demote the %match:Sentence:LCase%" />
+				<If sname="demote #,# demoted" desc=" (%type%) - %true% to demote, %false% to promote the %match:Sentence:LCase%" />
+
+				<If sname="overwrite" desc=" (%type%) -  %true% to overwrite, %false% to preserve" />
+				<If sname="overwrite all #,overwrite #" desc=" (%type%) - %true% to overwrite, %false% to preserve the %match:Sentence:LCase%" />
+
+				<If sname="delete all #,delete #,destroy all #destroy #" desc=" (%type%) - %true% to delete the %match:Sentence:LCase%" />
+
+				<If sname="recurse,recursive,recurse #,recursive #,# recursively" desc=" (%type%) - %true% to process recursively, %false% to process locally only" />
+
+				<If sname="loaded,saved,written,read" desc=" (%type%) - %true% if the data was %sName:LCase%" />
+				<If sname="changed,modified,updated" desc=" (%type%) - %true% if the data is %sName:LCase%" />
+
+				<If sName="# success,# succeeded,# successful,# ok" desc=" (%type%) - %true% if the %match:LCase% operation was a success, %false% if it failed" />
+				<If sName="success,succeeded,successful,ok" desc=" (%type%) - %true% if the operation was a success, %false% if it failed" />
+
+				<If sName="select" desc=" (%type%) - %true% to select, %false% to deselect" />
+				<If sName="select #" desc=" (%type%) - %true% to select, %false% to deselect the %match:Sentence:LCase%" />
+				<If name="deselect" desc=" (%type%) -  %true% to deselect, %false% to select" />
+				<If name="deselect#" desc=" (%type%) -  %true% to deselect, %false% to select the %match:Sentence:LCase%" />
+
+				<If sName="including" desc=" (%type%) - %true% to include %match:Sentence:LCase%" />
+
+				<If sName="# mode" desc=" (%type%) - %true% to enable %sName:LCase%, %false% to disable it" />
+
+				<If name="#able">
+					<IfNot sName="# table" desc=" (%type%) - %true% if %sName:LCase%" />
+				</If>
+
+				<If name="#ed" desc=" (%type%) - %true% if %sName:LCase%" />
+
+				<Set desc=" (%type%) - %true% to %sName:LCase%" />
+			</If>
+
+			<If type="IAsyncResult" desc=" (%type%) -   The result of the asynchronous operation" />
+
+			<If sName="default #" desc=" (%type%) - The default %match:Sentence:LCase%" />
+			<If sName="number of #,number #,# count" desc=" (%type%) - Number of %match:Sentence:LCase:Plural%" />
+			<If sName="Initial size of #,Initial # size,Default size of #,Default # size," desc=" (%type%) - Initial size of the %match:Sentence:LCase%" />
+			<If sName="size of #,# size" desc=" (%type%) - Size of the %match:Sentence:LCase%" />
+			<If sName="type of #,# type" desc=" (%type%) - Type of the %match:Sentence:LCase%" />
+			<If sName="filename,file name" desc=" (%type%) - Filename of the file" />
+			<If sName="# filename,# file name" desc=" (%type%) - Filename of the %match:Sentence:LCase% file" />
+			<If sName="leafname,leaf name" desc=" (%type%) - Leafname of the file" />
+			<If sName="# leafname,# leaf name" desc=" (%type%) - Leafname of the %match:Sentence:LCase% file" />
+			<If sName="directory name,directory,dir name,dirname,dir path,dirpath" desc=" (%type%) - Pathname of the directory" />
+			<If sName="folder name,foldername,folder,folderpath" desc=" (%type%) - Pathname of the folder" />
+			<If sName="# folder name,# folder, #folder path" desc=" (%type%) - Pathname of the %match:Sentence:LCase% folder" />
+			<If sName="# directory name,# directory,# directory path,# dir name,# dirname,# dir path" desc=" (%type%) - Pathname of the %match:Sentence:LCase% directory" />
+			<If sName="path,pathname,path name,file path, filepath" desc=" (%type%) - Full pathname of the file" />
+			<If name="lpszPathname" desc=" (%type%) - Full pathname of the file" />
+			<If sName="# pathname,# path name,#file path,# path" desc=" (%type%) - Full pathname of the %match:Sentence:LCase% file" />
+			<If sName="# uri,# url" desc=" (%type%) - %namenp:LastWord:UCase% of the %match:Sentence:LCase%" />
+			<If sName="uri,url" desc=" (%type%) - %namenp:UCase% of the document" />
+
+			<If sName="in stream,input stream,load stream,read stream,source stream" desc=" (%type%) - Stream to read data from" />
+			<If sName="out stream,output stream,save stream,write stream,destination stream" desc=" (%type%) - Stream to write data to" />
+
+			<If sName="owner #" desc=" (%type%) - The %match:Sentence:LCase% that owns this item" />
+			<If sName="# owner" desc=" (%type%) - The owner of the %match:Sentence:LCase%" />
+			<If sName="# manager,manager #" desc=" (%type%) - Manager for %match:Sentence:LCase%" />
+			<If sName="# information,# description,# descriptor,# specifier,# data" desc=" (%type%) - Information describing the %match:Sentence:LCase%" />
+			<If sName="information,description,data,descriptor,specifier" desc=" (%type%) - The %sname:LCase%" />
+			<If sName="# manifest" desc=" (%type%) - A list of %match:Sentence:LCase:Plural%" />
+			<If sName="# message,# datagram,# packet" desc=" (%type%) - Message describing the %match:Sentence:LCase%" />
+			<If sName="# context" desc=" (%type%) - Context for the %match:Sentence:LCase%" />
+			<If sName="# count" desc=" (%type%) - Number of %match:Sentence:LCase:Plural%" />
+			<If sName="number,count,total,sum" desc=" (%type%) - Number of " />
+			<If sName="# by">
+				<If type="string" desc=" (%type%) - Describes who %match:Sentence:LCase% this %object%" />
+				<Set desc=" (%type%) - Amount to %match:Sentence:LCase% by" />
+			</If>
+			<If sName="step,increment" desc=" (%type%) - Amount to increment by" />
+			<If sName="# options,# parameters,# preferences, settings" desc=" (%type%) - Options for controlling the %match:Sentence:LCase%" />
+			<If sName="options,parameters,preferences,settings" desc=" (%type%) - Options for controlling the operation" />
+			<If sName="# pattern,# match,# filter" desc=" (%type%) - A %sname:LastWord:LCase% specifying the %match:Sentence:LCase%" />
+			<If sName="pattern,match,filter" desc=" (%type%) - Specifies the %sname:LCase%" />
+			<If sName="unique identifier" desc=" (%type%) - Unique identifier" />
+			<If sName="# unique identifier" desc=" (%type%) - Unique identifier for the %match:Sentence:LCase%" />
+			<If sName="# colour,# color" desc=" (%type%) - The %match:LCase% %sname:LastWord:LCase%" />
+			<If sName="start #,end #,projected start #,projected end #,estimated start #,estimated end #" desc=" (%type%) -   The %sName:LCase%" />
+			<If sName="# identifier" desc=" (%type%) - %sname:LastWord:SCase% for the %match:Sentence:LCase%" />
+			<If sName="# identifiers" desc=" (%type%) - List of %sname:LastWord:LCase% for the %match:Sentence:LCase:Plural%" />
+			<If sName="current #,active #,selected #" desc=" (%type%) - The %sname:LCase%" />
+
+			<If sName="first name,last name,surname,mid name,middle name,nee,maiden name,christian name" desc=" (%type%) - The person's %sName:LCase%" />
+
+			<If sName="Maximum #,Minimum #,Average #">
+				<If sName="# length,# width,# height,# depth,# size,# extent,# extents,# time,# duration" desc=" (%type%) - The %sname:LCase%" />
+				<If sName="# lengths,# widths,# heights,# depths,# sizes,# extents,# times,# durations" desc=" (%type%) - A list of %sName:Sentence:LCase:Plural%" />
+			</If>
+			<If sName="date of #,# date,time of #,# time" desc=" (%type%) - The %sName:LCase%" />
+			<If sName="# identifier,# length,# width,# height,# depth,# size,# extent,# extents,# name,# type,# duration,# state" desc=" (%type%) - %sname:LastWord:SCase% of the %match:Sentence:LCase%" />
+			<If sName="# lengths,# widths,# heights,# depths,# sizes,# names,# types,# colors,# colours,# dates,# times,# durations,# states" desc=" (%type%) - List of %sname:LastWord:LCase% of the %match:Sentence:LCase:Plural%" />
+
+			<If sName="# category,# group,# set,# categories,# groups,# sets" desc=" (%type%) - %sname:LastWord:SCase% the %match:Sentence:LCase% belongs to" />
+
+			<If sName="length of #,width of #,height of #,depth of #,size of #,extent of #,extents of #,name of #,type of #,color of #,colour of #" desc=" (%type%) - %sname:FirstWord:SCase% of the %match:Sentence:LCase%" />
+			<If sName="# buffer" desc=" (%type%) - %sname:LastWord:SCase% for %match:Sentence:LCase% data" />
+			<If sName="new #">
+				<If sName="new list,new queue,new stack,new collection,new array,new dictionary" desc=" (%type%) - The %sname:LCase%" />
+			</If>
+			<If sName="# list,# queue,# stack,# collection,# array,# dictionary" desc=" (%type%) - %sname:LastWord:SCase% of %match:Sentence:LCase:Plural%" />
+
+			<If type="object" name="sender" desc=" (%type%) - Source of the event" />
+			<If type="#EventArgs" desc=" (%type%) - %match:Sentence:SCase% event information" />
+			<If type="EventArgs" desc=" (%type%) - Event information" />
+			<If type="CCmdUI*" desc=" (%type%) - An interface for setting and retrieving the UI state" />
+
+			<If type="XmlElement">
+				<If sName="element" desc=" (%type%) - Element to process" />
+				<If sName="# xml" desc=" (%type%) - Element describing the %match:Sentence:LCase%" />
+				<If sName="# element" desc=" (%type%) - Element describing the %match:Sentence:LCase%" />
+				<Set desc=" (%type%) - Element describing the %sName:LCase%" />
+			</If>
+			<If type="DateTime" desc=" (%type%) - The %sName:LCase% Date/Time" />
+			<If type="#Exception" desc=" (%type%) - Details of the exception" />
+			<If type="WPARAM" desc=" (%type%) - The wParam field of the message" />
+			<If type="LPARAM" desc=" (%type%) - The lParam field of the message" />
+
+			<If sName="how #" desc=" (%type%) - Describes %sName:LCase%" />
+
+			<!-- Look for unit suffixes "LengthMetres","LengthInMetres","LengthToMetres" etc -->
+			<If name="#s">
+				<If sName="# to years,# to months,# to weeks,# to days,# to hours,# to minutes,# to seconds,# to milliseconds,# in years,# in months,# in weeks,# in days,# in hours,# in minutes,# in seconds,# in milliseconds,# years,# months,# weeks,# days,# hours,# minutes,# seconds,# milliseconds" desc=" (%type%) -   The %match:LCase% in %name:LastWord:LCase%" />
+				<If sName="# to kilo bytes,# to mega bytes,# to giga bytes,# in kilo bytes,# in mega bytes,# in giga bytes,# kilo bytes,# mega bytes,# giga bytes" desc=" (%type%) - The %match:LCase% in %name:StripLastWord:LastWord:LCase%bytes" />
+				<If sName="# to bytes,# to kilobytes,# to megabytes,# to gigabytes,# in bytes,# in kilobytes,# in megabytes,# in gigabytes,# bytes,# kilobytes,# megabytes,# gigabytes" desc=" (%type%) - The %match:LCase% in %name:LastWord:LCase%" />
+				<If sName="# to millimeters,# to millimetres,# to centimeters,# to centimetres,# to meters,# to metres,# to kilometres,# to kilometers,# to yards,# to miles,# in millimeters,# in millimetres,# in centimeters,# in centimetres,# in meters,# in metres,# in kilometres,# in kilometers,# in yards,# in miles,# millimeters,# millimetres,# centimeters,# centimetres,# meters,# metres,# kilometres,# kilometers,# yards,# miles" desc=" (%type%) - The %match:LCase% in %name:LastWord:LCase%" />
+				<If sName="# to degrees,# to radians,# in degrees,# in radians,# degrees,# radians" desc=" (%type%) - The %match:LCase% in %name:LastWord:LCase%" />
+				<If sName="# to pounds,# to tons,# to tonnes,# to kilograms,# in pounds,# in tons,# in tonnes,# in kilograms,# pounds,# kilograms,# tons,# tonnes" desc=" (%type%) - The %match:LCase% in %name:LastWord:LCase%" />
+			</If>
+			<If name="#ius">
+				<If sName="# to celsius,# to celcius,# in celsius,# in celcius,# celsius,# celcius" desc=" (%type%) - The %match:LCase% in degrees celsius" />
+			</If>
+			<If name="#heit">
+				<If sName="# to fahrenheit,# in farhenheit,# farhenheit" desc=" (%type%) - The %match:LCase% in degrees farhenheit" />
+			</If>
+
+			<!-- Look for common lowercase prefixes -->
+			<If sNameRaw="i #" desc=" (%type%) - Zero-based index of the %match:Sentence:LCase%" />
+			<If sName="# index" desc=" (%type%) - Zero-based index of the %match:Sentence:LCase%" />
+			<If name="i,index" methodName="this" desc=" (%type%) - Zero-based index of the entry to access" />
+			<If name="i,index" desc=" (%type%) - Zero-based index of the " />
+			<If sName="# handle" desc=" (%type%) - Handle of the %match:Sentence:LCase%" />
+			<If type="HANDLE,HWND,HMENU,HEVENT,HGLOBAL,HLOCAL,HKEY,HBITMAP,HBRUSH,HTREEITEM,HCURSOR" desc=" (%type%) - Handle of the %sName:Sentence:LCase%" />
+
+			<If sName="source #,destination #,target #" desc=" (%type%) - %sname:SCase%" />
+			<If sName="source,from" desc=" (%type%) - Source for the" />
+			<If sName="destination,target" desc=" (%type%) - %sName:SCase% for the" />
+			<If sName="format" desc=" (%type%) - Describes the format to use" />
+			<If sName="message,# message,text,# text,string,# string,question,# question,label,# label,title,# title,datagram,# datagram,packet,# packet" desc=" (%type%) - The %sname:LCase%" />
+			<If type="button,checkbox,checkedlistbox,# combo,# combobox,# combo box,datetimepicker,label,linklabel,listbox,listview,maskedtextbox,monthcalendar,notifyicon,numericupdown,picturebox,progressbar,radiobutton,richtextbox,textbox,tooltip,treeview,webbrowser">
+				<If sName="# button,# check box,# checkbox,# checkedlistbox,# checked list box,# combo,# combobox,# combo box,# datetimepicker,# date time picker,# linklabel,# link label,# listbox,# list box,# list view,# listview,# maskedtextbox,# masked text box,# monthcalendar,# month calendar,# notifyicon,# notify icon,# numericupdown,# numeric up down,# picturebox,# picture box,# progressbar,# progress bar,# radiobutton,# radio button,# richtextbox,# rich text box,# rich text,# textbox,# text box,# tooltip,# tool tip,# treeview,# tree view,# webbrowser,# web browser" desc=" (%type%) - The %match:LCase% control" />
+				<Set desc=" (%type%) - The %sname:LCase% control" />
+			</If>
+
+			<!-- Common single-character parameter names -->
+			<If type="int[],int [],float[],float [],double[], double []">
+				<If name="x,y,z" desc=" (%type%) - An array of %name% coordinates" />
+			</If>
+
+			<If type="float,double,# float,# double,# float&amp;,# double&amp;,# float &amp;,# double &amp;">
+				<If name="x,y,z" desc=" (%type%) - The %name% coordinate" />
+				<If name="w" desc=" (%type%) - The width" />
+				<If name="h" desc=" (%type%) - The height" />
+			</If>
+
+			<If type="byte,short,int,long,int#,unsigned int,unsigned long">
+				<If name="i" desc=" (%type%) - The index" />
+				<If name="x,y,z" desc=" (%type%) - The %name% coordinate" />
+				<If name="w" desc=" (%type%) - The width" />
+				<If name="h" desc=" (%type%) - The height" />
+			</If>
+
+			<If type="byte,char">
+				<If name="b" desc=" (%type%) - The byte value" />
+				<If name="c" desc=" (%type%) - The character" />
+				<If name="r" desc=" (%type%) - The red component" />
+				<If name="g" desc=" (%type%) - The green component" />
+				<If name="b" desc=" (%type%) - The blue component" />
+				<If name="a" desc=" (%type%) - The alpha component" />
+			</If>
+
+			<If type="string,CString">
+				<If name="d" desc=" (%type%) - The description text" />
+				<If name="f" desc=" (%type%) - The format string" />
+				<If name="fn" desc=" (%type%) - The filename" />
+				<If name="m" desc=" (%type%) - The message text" />
+				<If name="q" desc=" (%type%) - The question text" />
+				<If name="s" desc=" (%type%) - The string" />
+			</If>
+
+			<If name="x1" desc=" (%type%) - The first x value" />
+			<If name="x2" desc=" (%type%) - The second x value" />
+			<If name="y1" desc=" (%type%) - The first y value" />
+			<If name="y2" desc=" (%type%) - The second y value" />
+			<If name="z1" desc=" (%type%) - The first z value" />
+			<If name="z2" desc=" (%type%) - The second z value" />
+			<If name="w1" desc=" (%type%) - The first w value" />
+			<If name="w2" desc=" (%type%) - The second w value" />
+
+			<If numCharsInName="2">
+				<If name="#1" desc=" (%type%) - The first %coretype%" />
+				<If name="#2" desc=" (%type%) - The second %coretype%" />
+				<If name="#3" desc=" (%type%) - The third %coretype%" />
+				<If name="#4" desc=" (%type%) - The fourth %coretype%" />
+				<If name="#5" desc=" (%type%) - The fifth %coretype%" />
+			</If>
+
+			<If name="#1" desc=" (%type%) - The first %match:Sentence:LCase%" />
+			<If name="#2" desc=" (%type%) - The second %match:Sentence:LCase%" />
+			<If name="#3" desc=" (%type%) - The third %match:Sentence:LCase%" />
+			<If name="#4" desc=" (%type%) - The fourth %match:Sentence:LCase%" />
+			<If name="#5" desc=" (%type%) - The fifth %match:Sentence:LCase%" />
+
+			<If type="CDataExchange#" desc=" (%type%) - an object that manages the data exchange operation" />
+
+			<!-- Catch-alls. -->
+			<If name="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" desc=" (%type%) - The %typeBase% to process" />
+			<Set desc=" (%type%) - The %sName:LCase%" />
+		</Variables>

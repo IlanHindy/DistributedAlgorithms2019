@@ -1,0 +1,34 @@
+﻿<Window x:Class="DistributedAlgorithms.CreateAttributeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CreateAttributeDialog" SizeToContent="WidthAndHeight">
+
+    <Grid>
+        <DockPanel>
+            <Label x:Name="TextBlock_Text" Content="Create attribute" Margin="15,15,15,0" Height="30"  DockPanel.Dock="Top" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" />
+            <DockPanel Margin="15,15,15,15" Height="30"  LastChildFill="False" DockPanel.Dock="Bottom">
+                <Button x:Name="Button_Quit" Content="Quit" Width="100"  DockPanel.Dock="Right" Click="Button_Quit_Click"/>
+                <Button x:Name="Button_Create" Content="Create" Width="100" DockPanel.Dock="Left" Click="Button_Create_Click"/>
+            </DockPanel>
+            <DockPanel LastChildFill="False" DockPanel.Dock="Bottom" Height="30"  Margin="15,15,15,0">
+                <CheckBox x:Name="CheckBox_Edditable" Content="Edittable" DockPanel.Dock="Left" VerticalAlignment="Top" IsChecked="True"/>
+                <CheckBox x:Name="CheckBox_IncludedInShortDescription" Content="Included in short description" DockPanel.Dock="Right" VerticalAlignment="Top" IsChecked="True"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Select Element Window Prms method" DockPanel.Dock="Top" Margin="15,10,15,0" VerticalAlignment="Top" FontSize="13.333" FontWeight="Bold"/>
+                <ListBox x:Name="ListBox_ElementWindowPrmsMethods" DockPanel.Dock="Top" Height="100"  Margin="15,0,15,0"/>
+                <Label Content="Select End input operation method" DockPanel.Dock="Top" Margin="15,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+                <ListBox x:Name="ListBox_EndInputOperations" DockPanel.Dock="Top" Height="100"  Margin="15,0,15,0"/>
+                <Label Content="Select attribute Type" DockPanel.Dock="Top" Margin="15,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+                <ListBox x:Name="ListBox_AttributeTypes" DockPanel.Dock="Top" Height="100"  Margin="15,0,15,0"/>
+                <Label x:Name="Label_SelectAttributeKey" Content="Select attribute key" DockPanel.Dock="Top" Margin="15,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+                <DockPanel x:Name="DockPanel_Key" DockPanel.Dock="Bottom" Margin="15,0,15,0">
+                    <ComboBox x:Name="ComboBox_SelectKeyCategory"  Margin="0,5,0,0" SelectionChanged="ComboBox_SelectKeyCategory_SelectionChanged"/>
+                    <ComboBox x:Name="ComboBox_SelectKeyType"  Margin="5,5,0,0" SelectionChanged="ComboBox_SelectKeyType_SelectionChanged"/>
+                    <ComboBox x:Name="ComboBox_SelectKey"  Margin="5,5,0,0"/>
+                    <TextBox x:Name="TextBox_InsertKey" TextWrapping="Wrap" Text="" Margin="5,5,0,0" DockPanel.Dock="Left"/>
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

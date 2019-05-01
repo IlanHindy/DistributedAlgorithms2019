@@ -1,0 +1,28 @@
+﻿
+/*! \mainpage Distributed Algorithms
+ *
+ * # Distributed Algorithm
+ * ## Implementing Algorithms
+ * - \subpage basicConcepts "Basic Concepts"
+ * - \subpage implementingAlgorith "The process of implementing algorithm"
+ * - \subpage checkInDesignPhase "Checks activated while in design phase"
+ * - \subpage checkBeforeRunning "Checks activated before running"
+ * - \subpage settingBaseAlgorithm "Setting Base Algorithm"
+ * - \subpage settingInternalEvents "Setting Internal Events"
+ * ## Program Algorithms
+ * - \subpage InputWindows "Methods for handling InputWindows"
+ * ### IValueHolder Algorithms
+ * - \subpage DeepCopy "DeepCopy"
+ * - \subpage CheckingIValueHolder "Checking IValueHolder"
+ * - \subpage DefineAttributePresentation "Define the attribute presentation in ElementWindow"
+ *
+ * 
+ *
+ */ 
+
+
+
+
+
+
+

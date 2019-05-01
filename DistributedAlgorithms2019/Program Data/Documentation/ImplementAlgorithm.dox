@@ -1,0 +1,226 @@
+﻿/*! \page implementingAlgorith The process of implementing algorithm
+ * - \subpage creatingTheCode "Creating the initial code"
+ * - \subpage networkElements "NetworkElements"
+ * - \subpage insertingInitialData "Inserting data needed for the algorithm"
+ * - \subpage programingAlgorithm "Programming the algorithm"
+ */
+
+/*! \page creatingTheCode Creating the initial code
+ * ## Preparations
+ * -# Specify if the network is a directed network and if the algorithm is centralized
+ * -# Decide what are the messages used by the algorithm and what are their components
+ * -# For each NetworkElement (Network, Process, Channel) decide :
+ *		-# What are the parameters for the NetworkElement (Parameters are variables that do not change during execution)
+ *		-# What are the variables for each NetworkElement (Variables can change during execution)
+ * 
+ * ## Create The initial code files
+ * -# Enter the program
+ * -# Select __Program -> Add or Update Algorithm__
+ * -# Select a source and target algorithm
+ *		-# If this a new algorithm select the Template algorithm as source
+ *		-# If this is an update to an algorithm select the algorithm to update as source
+ * -# In the dialog in the Messages item specify the messages that will be used in the algorithm 
+ * -# In the dialog in the Network's ElementAttributes set the Centralized and the DirectedNetwork attributes
+ * -# In the dialog fill the parameters (PrivateAttributes) and the Variables (OperationResults) of the Network, Process, Channel
+ * -# Click the Create button and the code generated will appear and will be generated 
+ * -# Exit the program
+ * -# There are 2 kinds of directories and files generated
+ *		-# The code files in the `Algorithms` folder according to the config
+ *		-# Data files in the `Algorithm Data` folder according to the config 
+ * -# Include the new code files in the Visual Studio project
+ *
+ * ## The following is a summary of the code generated:
+ * ### Code generated in the InitAndDef files
+ * #### Note :
+ * The code of this file must not be change manually if you want to change the setting reopen the __Add or Update Algorithm__ dialog
+ * #### For messages:
+ * ##### Enums			
+ * -# A main enum called MessageTypes that holds the possible messages
+ * -# An enum for each message holds it's components
+ * -# An enum for each dictionary which is a component of the message
+ 
+ * ##### Methods (The methods are part of the Process class because this is the class that uses them)
+ * -# A send method for each message
+ * -# A create method for each message that can be used to build the message 
+ * -# A create method for each dictionary or list that are part of the message
+ 
+ * #### For NetworkElements:
+ * ##### Enums (For each NetworkElement)
+ * -# Enum for each one of the 2 main dictionaries (PrivateAttributes, OperationResults)
+ * -# Enum for each one of the dictionaries that is a components of the variables or the parameters
+ 
+ * ##### Methods (For each one of the NetworkElements)
+ * -# An Init method for each one of the 2 dictionaries
+ * -# An Init method for each one of the dictionaries or lists that are components of the variables or parameters
+
+ *
+ * ## Delete algorithm
+ * -# From the Visual Studio project perform Exclude From project to the algorithm code (Under `Algorithms`)
+ * -# From the Visual Studio project delete the folder of the algorithm from `Algorithms`
+ * -# From the Visual Studio project delete the folder of the algorithm from `Algorithm Data`
+ *
+ */
+
+ /*! \page networkElements NetworkElements
+  * ## DistributedAlgorithms.NetworkElement
+  * - All classes of the implementation inherit from DistributedAlgorithms.NetworkElement
+  * - The DistributedAlgorithms.NetworkElement is composed from DistributedAlgorithms.AttributeDictionary
+  * - The following are the Dictionaries:
+  *		- Dictionaries that are read only:
+  *			- `DistributedAlgorithms.NetworkElement[ElementDictionaries.ElementAttributes]` : Attributes that are defined by the base class (for example attributes that are common to all the processes)
+  *     - Dictionaries that can be changed while in design mode and not in running mode 	
+  *			- `DistributedAlgorithms.NetworkElement[ElementDictionaries.PrivateAttributes]` : Attribute defined by the algorithm implementation
+  *     - Dictionaries that's values can be added read and write in running mode
+  *			- `DistributedAlgorithms.NetworkElement[ElementDictionaries.OperationResults]`  : Attributes that change during the execution of the algorithm
+  *		- Dictionaries that's values can be read or write but not added during execution
+  *			- `DistributedAlgorithms.NetworkElement[ElementDictionaries.PresentationParameters]`  : Attribute for changing the presentation of the elements during execution
+  *		- Backup dictionaries (for use of the program only)
+  *			- `DistributedAlgorithms.NetworkElement[ElementDictionaries.OperationResultsBackup]` : A dictionary that keeps the initial `DistributedAlgorithms.NetworkElement[ElementDictionaries.OperationResults]` for the next operation
+  *			- `DistributedAlgorithms.NetworkElement[ElementDictionaries.PresentationParametersBackup]` : A dictionary that keeps the initial `DistributedAlgorithms.NetworkElement[ElementDictionaries.PresentationParameters]` for the next operation
+  *
+  * ## DistributedAlgorithms.AttributeDictionary and keys
+  * - Each dictionary is composed from a __dynamic__ key and DistributedAlgorithms.Attribute as a value
+  * - For a regular use the keys are defined in __Enums__
+  * - Each class has to define the __Enum__ for each dictionary that it will add attributes to:
+  *		- The __pak__ enum for PrivateAttributes 
+  *		- The __ork__ enum for OperationResults
+  *		- An enum for each dictionary that will be used as component for the attributes
+  *		- 
+  * - The classes that inherit from DistributedAlgorithms.Algorithms.Base.Base.BaseMessage should define the following enums
+  *		- The __MessageTypes__ enum
+  *		- An enum for each message
+  *		- An enum for each dictionary which is a component of a message
+  *
+  * - The enums are already found in the initial code generated
+  *
+  * ## DistributedAlgorithms.Attribute
+  * - The value of the DistributedAlgorithms.AttributeDictionary entry is DistributedAlgorithms.Attribute
+  * - The DistributedAlgorithms.Attribute can contain the following data types
+  *		- Simple types
+  *		- Enum
+  *		- DistributedAlgorithms.AttributeList
+  *		- DistributedAlgorithms.AttributeDictionary
+  *		- DistributedAlgorithms.NetworkElement (and it's inherited classes)
+  *
+  * ## Adding a new attribute example:
+  *		- The object is __message__ (inherited from DistributedAlgorithms.NetworkElement)
+  *		- The dictionary is DistributedAlgorithms.NetworkElement[ElementDictionaries.ElementAttributes]
+  *		- The class where the enum is defined is DistributedAlgorithms.Algorithms.Base.Base.BaseMessage
+  *		- The name of the enum is __pak__
+  *		- The name of the key in the enum is __Round__
+  *		- The value of the attribute is __0__
+  *	~~~{.cs}
+  * // Long Version
+  * message[ElementDictionaries.ElementAttributes].Add(BaseMessage.pak.Round, new Attribute { Value = 0 });
+  *
+  * // Short Version using DistributedAlgorithms.NetworkElement getters
+  * message.ea.Add(BaseMessage.pak.Round, new Attribute { Value = 0 });
+  *
+  * // An even shorter version using the DistributedAlgorithms.AttributeDictionary Add 
+  * message.ea.Add(BaseMessage.pak.Round, 0);
+  * ~~~
+
+  * ## Accessing the value (for reading or assigning)
+  *	~~~{.cs}
+  * // Long Version
+  * message[ElementDictionaries.ElementAttributes][BaseMessage.pak.Round];
+  *
+  * // Short Version using DistributedAlgorithms.NetworkElement getters
+  * message.ea[BaseMessage.pak.Round]
+  *
+  * // An even shorter version using intuitive access
+  * message.Round
+  *
+  * ~~~
+  */
+  
+/*! \page insertingInitialData Inserting data needed for the algorithm 
+ * ## Initial the network structure
+ * - The network has 2 characteristics :
+ *		- Is it Centralized
+ *		- Is it Directed
+ * - The setting of these characteristics is done in the following method of __Network__ class
+ * ~~~{.cs}
+ * protected override void CreateInitNetwork()
+ * {
+ *   base.CreateInitNetwork();
+ *
+ *   // Determine network type parameters
+ *   ElementAttributes.Value[BaseNetwork.ElementAttributeKeys.DirectedNetwork].Value = false;
+ *   ElementAttributes.Value[BaseNetwork.ElementAttributeKeys.Centrilized].Value = true;
+ * }
+ * ~~~
+ *
+ * ## Decide the types and the structures of the messages
+ * - For each message type add a key to the enum __MessageTypes__  in the __Message__ class
+ * - For each field in a message add a key for the enum __ork__ in the __Message__ class
+ *
+ * ## Processor class
+ * - For each attribute that will not change during execution add to the __PrivateAttributes.Value__ dictionary:
+ *		- Add a key to the __PrivateAttributeKeys__ enum
+ *		- Add the attribute to the dictionary:
+ * ~~~{.cs}
+ * public override void Init(int idx, bool clearPresentation = true)
+ * {
+ *		base.Init(idx, clearPresentation);
+ *
+ *		// Add initialization of PrivateAttributes.Value here
+ *		PrivateAttributes.Value.Add(PrivateAttributeKeys.NumberOfRounds, new Attribute { Value = 1});
+ * }
+ * ~~~
+ * - For each variable of the process that changes during execution add to __OperationResults.Value__ dictionary
+ *		- Add the key to the __OperationResults.ValueKeys__ enum
+ *		- Add the key to the dictionary:
+ * ~~~{.cs}
+ * protected override void InitOperationResults.Value()
+ * {
+ *		base.InitOperationResults.Value();
+ *
+ *      // Add initialization of OperationResults.Value here
+ *		OperationResults.Value.Add(OperationResults.Value.Rounds, new Attribute { Value = 1});
+ * }
+ * ~~~
+ *
+ * ## Channel and Network classes
+ * The same insertion of attributes that was done to the __Process__ should be done to the __Channel__ and __Network__
+ */
+
+/*! \page programingAlgorithm Programming the algorithm
+ * ## Programing the Init of the algorithm
+ * - For a process or processors that has the __ElementAttributes.Value[BaseProcess.ElementAttributeKeys.Initiator].Value == true__
+ *   The method __RunAlgorithm__ will be operated
+ * - The method has to implement the initialize of the algorithms by the initiator
+ * - There is no need to check the attribute in the method
+ *
+ * ## Programing the algorithm
+ * - The method __ReceiveHandling__ will be called each time a message will arrive to the processor
+ * - This method get's the message and decide what to do with it
+ * - Topically the algorithm of this method is:
+ * ~~~{.cs}
+ * switch (messageType)
+ * {
+ *		case messageType1:...
+ *		case messageType2:...
+ * }
+ * ~~~
+ *
+ * ## Updating the presentation
+ * - After each change was made in the status of the processor or channel the presentation can be changed
+ * - In order to change the presentation change the values of the attributes in the __PresenationParameters__ dictionary
+ * - The presentation will change after the method __ReceiveHandling__ will return
+ *
+ * ## Utility methods to be used
+ * ### Creating a message
+ * - All messages are from type DistributedAlgorithms.Algorithms.Base.Base.BaseMessage
+ * - The process of creating a message is composed from 2 stages;
+ *		- Create the header
+ *		- Add algorithm specific fields
+ * - See DistributedAlgorithms.Algorithms.Base.Base.BaseMessage for methods that can be used
+ *
+ * ### Sending a message to one or more directions
+ * - See the introduction for DistributedAlgorithms.Algorithms.System.Template.TemplateProcess for summary of the 
+ *	 sending methods
+ *
+ * ### Terminate a running
+ * - See the introduction for DistributedAlgorithms.Algorithms.System.Template.TemplateProcess for the Terminate method 
+ */

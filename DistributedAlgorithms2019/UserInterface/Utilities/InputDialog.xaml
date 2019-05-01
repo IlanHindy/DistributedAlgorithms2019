@@ -1,0 +1,22 @@
+﻿<Window x:Class="DistributedAlgorithms.InputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DistributedAlgorithms"
+        mc:Ignorable="d"
+        Title="InputDialog" SizeToContent="WidthAndHeight">
+    <DockPanel LastChildFill="False">
+        <TextBlock x:Name="TextBlock_Text" DockPanel.Dock="Top">Insert values</TextBlock>
+        <Grid x:Name ="Grid_InputFields" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <Button x:Name="Button_OK" Content="OK" Click="Button_OK_Click" DockPanel.Dock="Left"/>
+            <Button x:Name="Button_Cancel" Content="Cancel" Click="Button_Cancel_Click" DockPanel.Dock="Right"/>
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,98 @@
+﻿/*! \page dataStructures The Data Structures
+ * - \subpage attribute "Attribute"
+ * - \subpage attributeDictionary "AttributeDictionary"
+ * - \subpage attributeList "AttributeList"
+ * - \subpage networkElement "NetworkElement"
+ */
+
+ /*! \page attribute  DistributedAlgorithms.Attribute
+  *	# General
+  * - All data in the application is held in DistributedAlgorithms.Attribute
+  *	- The Attribute 
+  * - The DistributedAlgorithms.Attribute can contain the following data types
+  *		- Simple types
+  *		- Enum
+  *		- DistributedAlgorithms.AttributeList
+  *		- DistributedAlgorithms.AttributeDictionary
+  *		- DistributedAlgorithms.NetworkElement (and it's inherited classes)
+  *
+  * # Attribute public members
+  *	- __Value (dynamic)__ - The value
+  * - __Editable (bool)__ - Whether the attribute can be edited in the GUI after it was created
+  * - __IncludeInShortDescription (bool) - 
+  *	- __EndInputOperationMethod__ - A method that is activated after the value was changed in the GUI
+  *									For checking the value etc..
+  *	- __ElementWindowPrmMethod__ - A method that defines the way the attribute will be presented in the GUI
+  *
+  * # Setting and Getting the values of the attribute
+  *	- In order to get / set the value of attribute get / set the value of attribute.Value
+  * - Basically while programing algorithms all the attributes are in a container element.
+  * - The container elements has shortcuts for accessing the value (See the section about the container elements)
+  */
+
+  /*! \page attributeDictionary  DistributedAlgorithms.AttributeDictionary
+   * # General
+   * - Each dictionary is composed from a __dynamic__ key and DistributedAlgorithms.Attribute as a value
+   *
+   * # Access to DistributedAlgorithms.Attribute's values in the DistributedAlgorithms.AttributeDictionary
+   * - Access attribute value by key
+   *~~~{.cs}
+   * // To access the value of an attribute by a dynamic key __dynamicKey__
+   * dict[__dynamicKey__] = value
+   *~~~
+   */
+
+   
+  /*! \page attributeList  DistributedAlgorithms.AttributeList
+   * # General
+   * - Each dictionary is composed from DistributedAlgorithms.Attributes
+   *
+   * # Access to DistributedAlgorithms.Attribute's values in the DistributedAlgorithms.AttributeList
+   * - Access attribute value by the index
+   *~~~{.cs}
+   * // To access the value of an attribute by a dynamic key __dynamicKey__
+   * list[index] = value
+   *~~~
+   */
+
+   
+  /*! \page NetworkElement  DistributedAlgorithms.NetworkElement
+   * # General
+   * - All classes of the implementation inherit from DistributedAlgorithms.NetworkElement
+   * - The DistributedAlgorithms.NetworkElement is composed from DistributedAlgorithms.AttributeDictionary
+   * - The following are the Dictionaries:
+   *		- Dictionaries that are read only:
+   *			- DistributedAlgorithms.NetworkElement[ElementDictionaries.ElementAttributes].Value : Attributes that are defined by the base class (common to all the elements from the same type)
+   *     - Dictionaries that's values can be added but read only while processing	
+   *			- DistributedAlgorithms.NetworkElement[ElementDictionaries.PrivateAttributes].Value : Attribute defined by the algorithm implementation
+   *     - Dictionaries that's values ca be added read and write
+   *			- DistributedAlgorithms.NetworkElement[ElementDictionaries.OperationResults].Value  : Attributes that change during the execution of the algorithm
+   *		- Dictionaries that's values can be read (usually write) during execution
+   *			- DistributedAlgorithms.NetworkElement.PresentationParameters  : Attribute for changing the presentation of the elements during execution
+   *		- Backup dictionaries (for use of the program only)
+   *			- DistributedAlgorithms.NetworkElement[ElementDictionaries.OperationResults]Backup.Value : A dictionary that keeps the initial DistributedAlgorithms.NetworkElement[ElementDictionaries.OperationResults].Value for the next operation
+   *			- DistributedAlgorithms.NetworkElement.PresentationParametersBackup.Value : A dictionary that keeps the initial DistributedAlgorithms.NetworkElement.PresentationParameters for the next operation
+   *
+   * # Access Dictionaries
+   * - The dictionaries has a getters with shortcuts to the dictionaries for example
+   *	- ea for element attributes
+   *    - pa for Private Attributes
+   *~~~{.cs}
+   * networkElement.pa
+   *~~~
+   * - To get a list of the dictionaries call Dictionaries() method
+   * - Access dictionaries by indexing
+   *~~~{.cs}
+   * networkElement[ElementDictionaries.ElementAttributes]
+   *~~~
+   * - To Access an attribute value in one of the dictionaries with a string specifying the key
+   *~~~{.cs}
+   * networkElement["key"]
+   *~~~
+   * - To access an attribute value in one of the dictionaries according to a dynamic key
+   *~~~{.cs}
+   * networkElement[key]
+   *~~~
+   */
+   *
+   */
