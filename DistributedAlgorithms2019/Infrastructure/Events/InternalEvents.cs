@@ -259,7 +259,7 @@ namespace DistributedAlgorithms
             elementWindowPrms.newValueControlPrms.inputFieldType = InputFieldsType.ComboBox;
             string[] options = TypesUtility.GetInternalEventMethods().ToArray();
             elementWindowPrms.newValueControlPrms.options = options;
-            elementWindowPrms.newValueControlPrms.Value = options[0];
+            elementWindowPrms.newValueControlPrms.Value = attribute.Value;
             return elementWindowPrms;
         }
         #endregion

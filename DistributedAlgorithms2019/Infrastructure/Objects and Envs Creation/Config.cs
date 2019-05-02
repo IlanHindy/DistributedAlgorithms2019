@@ -163,7 +163,7 @@ namespace DistributedAlgorithms
         /// \return The indexed item.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public dynamic this[dynamic key]
+        public new dynamic this[dynamic key]
         {
             get { return pa[key]; }
             set { pa[key] = value; }

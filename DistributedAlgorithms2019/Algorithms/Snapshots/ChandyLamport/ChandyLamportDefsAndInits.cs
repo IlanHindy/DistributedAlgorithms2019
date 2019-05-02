@@ -109,7 +109,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 			{
 				MessageDataFor_Report();
 			}
-			Send(m.MessageTypes.Report, fields, selectingMethod, ids, 0, 0);
+			Send(m.MessageTypes.Report, fields, selectingMethod, ids, -1, 0);
 		}
  
 		public void SendMarker(AttributeDictionary  fields = null, 
@@ -120,7 +120,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 			{
 				MessageDataFor_Marker();
 			}
-			Send(m.MessageTypes.Marker, fields, selectingMethod, ids, 0, 0);
+			Send(m.MessageTypes.Marker, fields, selectingMethod, ids, -1, 0);
 		}
  
 		public void SendBaseMessage(AttributeDictionary  fields = null, 
@@ -131,7 +131,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 			{
 				MessageDataFor_BaseMessage();
 			}
-			Send(m.MessageTypes.BaseMessage, fields, selectingMethod, ids, 0, 0);
+			Send(m.MessageTypes.BaseMessage, fields, selectingMethod, ids, -1, 0);
 		}
 	}
 	#endregion
@@ -196,7 +196,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
  
 		public enum ork
 		{
-			Weight, Results, ReceivedMessageFrom, Snapshot, Recordered
+			Weight, Results, ReceivedMessageFrom, Snapshot, Recordered, StatusColor
 		}
 	}
 	# endregion
@@ -232,8 +232,9 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 			dictionary.Add(p.ork.Weight, new Attribute { Value = 0 ,Changed = false } );
 			dictionary.Add(p.ork.Results, new Attribute { Value = Init_ork_Results() ,Changed = false } );
 			dictionary.Add(p.ork.ReceivedMessageFrom, new Attribute { Value = Init_ork_ReceivedMessageFrom() ,Changed = false } );
-			dictionary.Add(p.ork.Snapshot, new Attribute { Value = 0 ,Changed = false } );
-			dictionary.Add(p.ork.Recordered, new Attribute { Value = false ,Changed = false } );
+			dictionary.Add(p.ork.Snapshot, new Attribute { Value = "" ,Changed = false } );
+            dictionary.Add(p.ork.StatusColor, new Attribute { Value = "Not Set", Changed = false });
+            dictionary.Add(p.ork.Recordered, new Attribute { Value = false ,Changed = false } );
 			base.InitOperationResults();
 		}
 	}

@@ -333,9 +333,11 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 
         protected override void RunAlgorithm()
         {
+            or[bp.ork.Round] = 0;
             if (ea[bp.eak.Initiator])
             {
                 or[p.ork.Weight] = 1;
+                TurnBlueInternalEventHandler();
                 TakeSnapshot();
             }
         }
@@ -376,7 +378,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
                     // Save the message - It will be sent as message in the channels
                     if (or[p.ork.Recordered] && !channel.or[c.ork.Marker])
                     {
-                        channel.or[c.ork.State].Add(message[bm.ork.MessageName]);
+                        channel.or[c.ork.State].Add(message[bm.ork.Name]);
                     }
                     break;
                 case m.MessageTypes.Marker:
@@ -394,13 +396,17 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
                     {
                         EndSnapshot();
                     }
+
+                    // Change the text on the process because the weight changed
+                    pp[bp.ppk.Text] = GetProcessDefaultName() + "\n" + or[p.ork.Weight];
                     break;
                 case m.MessageTypes.Report:
 
                     // If received a Report Message
                     // If this is not the first report from the source processor in this round
-                    // throw the message
-                    if (message[bm.pak.Round] < or[bp.ork.Round] ||
+                    // (or the previouse round because a report can come befor or after 
+                    // the marker throw the message
+                    if (message[bm.pak.Round] < or[bp.ork.Round] - 1 ||
                         ((AttributeList)or[p.ork.ReceivedMessageFrom]).Any((a => a.Value == (int)message[m.report.Id])))
                     {
                         break;
@@ -524,15 +530,17 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
         ///      The construct of this method body is:
         ///      
         ///~~~{.cs}
-        /// protected override void InitInternalEvents()
+        /// //Example for adding internal events in this method
+        /// protected virtual void InitInternalEvents()
         /// {
         ///     // For each event create a call like :
         ///    InsertInternalEvent(
-        ///        Event.EventTrigger.AfterSendMessage,    // Trigger
-        ///        0,                                      // Round
-        ///        bm.MessageTypes.Forewared,              // Message type (can be any message type)
-        ///        1,                                      // The process which is the other end of the send/receive of the trigger
-        ///        new AttributeList { "SomeMethod" });    // The name of the method that processes the event
+        ///        0,                                    // The id of the process that will activate the event
+        ///        EventTriggerType.AfterSendMessage,    // Trigger (The action the process is doing)
+        ///        0,                                    // Round (the round of the message)
+        ///        bm.MessageTypes.Forewared,            // Message type (can be any message type)
+        ///        1,                                    // The process which is the other end of the send/receive of the trigger
+        ///        new List<InternalEvents.InternalEventDelegate> { SomeMethod });    // The name of the method that processes the event
         /// }
         ///~~~
         ///      
@@ -567,13 +575,28 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
         /// \param dummy (Optional)  (DummyForInternalEvent) - The dummy.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void DefaultInternalEventHandler(InternalEvent.DummyForInternalEvent dummy = null)
+        public void DefaultInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
         { }
+        public void TurnBlueInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
+        {
+            or[p.ork.StatusColor] = "Blue";
+            pp[bp.ppk.Background] = System.Drawing.KnownColor.LightBlue;
+        }
+        public void TurnGreenInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
+        {
+            or[p.ork.StatusColor] = "Green";
+            pp[bp.ppk.Background] = System.Drawing.KnownColor.LightGreen;
+        }
+        public void TurnGrayInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
+        {
+            or[p.ork.StatusColor] = "Gray";
+            pp[bp.ppk.Background] = System.Drawing.KnownColor.LightGray;
+        }
         #endregion
         #region /// \name Base Algorithm Events
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override void InitBaseAlgorithmEvents()
+        /// \fn protected override void InitBaseAlgorithm()
         ///
         /// \brief Init base algorithm data.
         ///
@@ -593,35 +616,42 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
         /// \par Usage Notes.
         ///      The implementation of this method is :
         ///      
-        ///~~~{.cs}
-        ///protected virtual void InitBaseAlgorithmData()
-        ///{
+        /// ~~~{.cs}
+        /// // Example for adding base algorithm message in this method
+        /// protected virtual void InitBaseAlgorithmData()
+        /// {
+        ///      // For each event you want to create do steps 1-3
+        ///      //1. Create BaseAlgorithmMessages object
+        ///      BaseAlgorithmMessages messages = new BaseAlgorithmMessages();
         ///      
-        ///      // For each Base Algorithm message to be send make the following call
+        ///      //2. Foreach message you want to be sent in the event call AddMessage of the object
+        ///      messages.AddMessage(bm.MessageTypes.NullMessageType,  // The type of the message to be sent
+        ///                "BaseMessages",                             // The name of the message to be sent
+        ///                new AttributeDictionary(),                  // The fields of the message to be sent
+        ///                new AttributeList { 1 });                   // The id of the target processor of the message
+        ///                
+        ///      //3.Call InsertBaseAlgorithmEvent 
         ///      InsertBaseAlgorithmEvent(
-        ///      
-        ///         // The trigger fields. (fields that are used to decide whether to send the Base Algorithm message
-        ///         Event.EventTrigger.AfterSendMessage,    // Trigger
-        ///         0,                                      // Round
-        ///         bm.MessageTypes.Forewared,              // Message type (can be any message type)
-        ///         1,                                      // The process which is the other end of the send/receive of the trigger
-        ///      
-        ///         // The base algorithm message (The message to be sent if the trigger is true
-        ///         bm.MessageTypes.Forewared,              // The type of the message to send. Can also be any type that the algorithm declares
-        ///         "Message Name",                         // The name of the message to send
-        ///         new AttributeDictionary {               // An AttributeDictionary which contains all the fields in the message to be sent
-        ///             { bm.ork.MessageName, "somestring" } // Can also use keys that are declared by the algorithm
-        ///         },
-        ///         new AttributeList { 1 });                   // List of the target processes of the base algorithm message
-        ///}
-        ///~~~.
+        ///             // The id of the process that will activate the event
+        ///             0,                                      
+        ///             
+        ///             // Define the trigger which describe condition for sending the messages
+        ///             EventTriggerType.AfterSendMessage,    // Trigger (The action the process is doing)
+        ///             0,                                    // Round (the round of the message)
+        ///             bm.MessageTypes.Forewared,            // Message type (can be any message type)
+        ///             1,                                    // The process which is the other end of the send/receive of the trigger
+        ///             
+        ///             // The messages that will be sent when the trigger hits
+        ///             messages)     
+        /// ~~~
         ///
         /// \author Ilanh
         /// \date 20/12/2017
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void InitBaseAlgorithmEvents()
+        protected override void InitBaseAlgorithm()
         {
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -735,7 +765,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
             if (!or[p.ork.Recordered])
             {
                 or[bp.ork.Round]++;
-                or[p.ork.Snapshot] = or[bp.ork.Round];
+                or[p.ork.Snapshot] = or[p.ork.StatusColor];
                 or[p.ork.Recordered] = true;
                 or[p.ork.ReceivedMessageFrom].Clear();
                 double weight = or[p.ork.Weight];
@@ -743,7 +773,10 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
                 or[p.ork.Weight] = weight / 2;
                 SendMarker(MessageDataFor_Marker(bm.PrmSource.Prms, null,
                     weight / (2 * numOfNeighbours)));
-                pp[bp.ppk.Text] = GetProcessDefaultName() + "\n" + or[p.ork.Weight];
+                if (ea[bp.eak.Initiator])
+                {
+                    or[p.ork.Results].Add("--- Results of round " + or[bp.ork.Round] + " --");
+                }
 
             }
         }
@@ -767,7 +800,6 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 
         private void EndSnapshot()
         {
-
             // If the process is the initiator - save the snapshot to the results
             if (ea[bp.eak.Initiator])
             {
@@ -787,6 +819,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport
 
             // Init the algorithm flags and variables for the next round snapshot
             or[p.ork.Recordered] = false;
+            or[p.ork.Snapshot] = "Not Set";
             for (int idx = 0; idx < InChannels.Count; idx++)
             {
                 InChannels[idx].or[c.ork.Marker] = false;
