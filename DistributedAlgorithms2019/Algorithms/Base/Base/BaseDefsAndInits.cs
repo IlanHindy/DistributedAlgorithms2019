@@ -21,7 +21,7 @@ namespace DistributedAlgorithms
 			 set { ea[ne.eak.Edited] = value; }
 		}
  
-		public System.Int32 Id
+		public double Id
 		{
 			 get { return ea[ne.eak.Id]; }
 			 set { ea[ne.eak.Id] = value; }
@@ -34,14 +34,14 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
 	#region /// \name partial class for BaseMessage
 	public partial class BaseMessage: NetworkElement
 	{
- 
-		public DistributedAlgorithms.Algorithms.Base.Base.bm.MessageTypes MessageType
-		{
-			 get { return pa[bm.pak.MessageType]; }
-			 set { pa[bm.pak.MessageType] = value; }
-		}
- 
-		public System.Int32 SourceProcess
+
+        public dynamic MessageType
+        {
+            get { return pa[bm.pak.MessageType]; }
+            set { pa[bm.pak.MessageType] = value; }
+        }
+
+        public System.Int32 SourceProcess
 		{
 			 get { return pa[bm.pak.SourceProcess]; }
 			 set { pa[bm.pak.SourceProcess] = value; }

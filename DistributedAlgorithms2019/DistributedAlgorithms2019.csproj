@@ -64,6 +64,7 @@
     <Compile Include="Algorithms\Base\Base\BaseChannel.cs" />
     <Compile Include="Algorithms\Base\Base\BaseDefsAndInits.cs" />
     <Compile Include="Algorithms\Base\Base\BaseMessage.cs" />
+    <Compile Include="Algorithms\Base\Base\BaseMessageTest.cs" />
     <Compile Include="Algorithms\Base\Base\BaseNetwork.cs" />
     <Compile Include="Algorithms\Base\Base\BaseProcess.cs" />
     <Compile Include="Algorithms\Snapshots\ChandyLamport\ChandyLamportChannel.cs" />
@@ -71,6 +72,11 @@
     <Compile Include="Algorithms\Snapshots\ChandyLamport\ChandyLamportMessage.cs" />
     <Compile Include="Algorithms\Snapshots\ChandyLamport\ChandyLamportNetwork.cs" />
     <Compile Include="Algorithms\Snapshots\ChandyLamport\ChandyLamportProcess.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_NewStyle\ChandyLamport_NewStyleChannel.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_NewStyle\ChandyLamport_NewStyleDefsAndInits.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_NewStyle\ChandyLamport_NewStyleMessage.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_NewStyle\ChandyLamport_NewStyleNetwork.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_NewStyle\ChandyLamport_NewStyleProcess.cs" />
     <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundChannel.cs" />
     <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundDefsAndInits.cs" />
     <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundMessage.cs" />

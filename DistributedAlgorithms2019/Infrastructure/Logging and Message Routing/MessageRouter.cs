@@ -193,7 +193,7 @@ namespace DistributedAlgorithms
             return MessageBoxEvent(null, new object[] { labelsStrings, title, buttonsStrings, imageIcon, sizeToContent });            
         }
 
-        public static string CustomizedMessageBox(List<MessageBoxElementData> labels, string title = null, List<MessageBoxElementData> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
+        public static string CustomizedMessageBox(List<MessageBoxElementData> labels, string title = "", List<MessageBoxElementData> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         {
             return CustomizedMessageBoxEvent(null, new object[] { labels, title, buttons, imageIcon, sizeToContent });
         }

@@ -201,6 +201,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             pa.Add(bm.pak.SourcePort, new Attribute { Value = sendingChannel.or[bc.ork.SourcePort], IncludedInShortDescription=false, IncludeInEqualsTo = false });
             pa.Add(bm.pak.DestProcess, new Attribute { Value = sendingChannel.ea[bc.eak.DestProcess] });
             pa.Add(bm.pak.DestPort, new Attribute { Value = sendingChannel.or[bc.ork.DestPort], IncludedInShortDescription = false, IncludeInEqualsTo = false });
+            ea.DeepCopy(sourceMessage.ea);
             op.DeepCopy(sourceMessage.op);
             or.DeepCopy(sourceMessage.or);
         }
@@ -242,6 +243,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             string messageName = "" ,
             int round = 0, int logicalClock = 0):base(true)
         {
+            InitElementAttributes(0);
             this.network = network;
             pa.Add(bm.pak.MessageType, new Attribute { Value = messageType});
             try

@@ -414,6 +414,10 @@ namespace DistributedAlgorithms
             }
 
             CustomizedMessageBox messageBox = new CustomizedMessageBox();
+            if (!sizeToContent)
+            {
+                messageBox.MaxWidth = 500;
+            }
 
             messageBox.Title = title;
 
@@ -432,7 +436,7 @@ namespace DistributedAlgorithms
                 }
                 else if (control is SyntaxHighlight)
                 {
-                    messageBox.MaxWidth = 800;
+                    messageBox.MaxWidth = 1200;
                     fullMessage += ((SyntaxHighlight)control).Text;                  
                 }
             }
@@ -448,10 +452,7 @@ namespace DistributedAlgorithms
                 button.Click += new RoutedEventHandler(messageBox.Button_Click);
                 insertIdx++;
             }
-            if (!sizeToContent)
-            {
-                messageBox.MaxWidth = 500;
-            }
+            
             MessageRouter.AddEditOperation(title, fullMessage, imageIcon, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null, TextWrapping.NoWrap));
             messageBox.ShowDialog();
             MessageRouter.AddEditOperationResult(messageBox.Result, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null, TextWrapping.NoWrap));
@@ -1221,6 +1222,11 @@ namespace DistributedAlgorithms
         public static SyntaxHighlight SyntaxHighlightBlock(string text, HashSet<string> classes, Font font = null)
         {
             SyntaxHighlight syntaxHighlight = new SyntaxHighlight(text, classes);
+            if (font is null)
+            {
+                font = new Font();
+            }
+            font.fontSize = 12;
             font.SetFont(syntaxHighlight);
             return syntaxHighlight;
         }

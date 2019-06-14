@@ -1271,7 +1271,9 @@ namespace DistributedAlgorithms
         public string EnumString(string enumString, 
             bool isMessage, 
             string targetSubject, 
-            string targetAlgorithm, 
+            string targetAlgorithm,
+            string sourceSubject,
+            string sourceAlgorithm,
             HashSet<string> syntaxHighlight)
         {
             string eol = Environment.NewLine;
@@ -1287,7 +1289,7 @@ namespace DistributedAlgorithms
             s+= eol + "\t\t\t";
             foreach (dynamic key in this.Keys)
             {
-                if (!KeyOfThisClass(key, targetSubject, targetAlgorithm))
+                if (!KeyOfThisClass(key, targetSubject, targetAlgorithm, sourceSubject, sourceAlgorithm))
                 {
                     continue;
                 }
@@ -1422,12 +1424,12 @@ namespace DistributedAlgorithms
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string SendMessagesStrings()
+        public string SendMessagesStrings(string enumClass)
         {
             string s = "";
             foreach (var entry in this)
             {
-                s += SendMessageString(entry.Key);
+                s += SendMessageString(entry.Key, enumClass);
             }
             return s;
         }
@@ -1470,7 +1472,7 @@ namespace DistributedAlgorithms
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private string SendMessageString(object key)
+        private string SendMessageString(object key, string enumClass)
         {
             string eol = Environment.NewLine;
             string messageName = this.GetEnumName(key, true);
@@ -1483,9 +1485,9 @@ namespace DistributedAlgorithms
             s += eol + "\t\t{";
             s += eol + "\t\t\tif(fields is null)";
             s += eol + "\t\t\t{";
-            s += eol + "\t\t\t\t" + this.MessageMainDictionaryMethodName(key) + "();";
+            s += eol + "\t\t\t\tfields = " + this.MessageMainDictionaryMethodName(key) + "();";
             s += eol + "\t\t\t}";
-            s += eol + "\t\t\tSend(m.MessageTypes." + messageName + ", fields, selectingMethod, ids, round, clock);";
+            s += eol + "\t\t\tSend(" + enumClass +".MessageTypes." + messageName + ", fields, selectingMethod, ids, round, clock);";
             s += eol + "\t\t}";
             return s;
         }
@@ -1515,7 +1517,13 @@ namespace DistributedAlgorithms
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string InitMainDictionaryMethodString(object key, string enumClass, ref string gettersSettersString, string targetSubject, string targetAlgorithm)
+        public string InitMainDictionaryMethodString(object key, 
+            string enumClass, 
+            ref string gettersSettersString, 
+            string targetSubject, 
+            string targetAlgorithm,
+            string sourceSubject,
+            string sourceAlgorithm)
         {
             string eol = Environment.NewLine;
             string s = eol + " " + eol + "\t\tprotected override void " + this.MainDictionaryInitMethodName() + "()";
@@ -1524,7 +1532,7 @@ namespace DistributedAlgorithms
             s += eol + "\t\t\tdictionary.selfEnumName = " + "\"" + this.DictionaryEnum(ClassFactory.GenerateNamespace(targetSubject, targetAlgorithm), enumClass) + "\";";
             foreach (var entry in this)
             {
-                if (!KeyOfThisClass(entry.Key, targetSubject, targetAlgorithm))
+                if (!KeyOfThisClass(entry.Key, targetSubject, targetAlgorithm, sourceSubject, sourceAlgorithm))
                 {
                     continue;
                 }
@@ -1561,7 +1569,7 @@ namespace DistributedAlgorithms
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private string GetterSetterString(object key ,Attribute attribute, string attributeKey)
+        private string GetterSetterString(object key ,Attribute attribute, string attributeKey, string dictionary = null)
         {
             string eol = Environment.NewLine;
             string typeStr;
@@ -1571,12 +1579,16 @@ namespace DistributedAlgorithms
             }
             else
             {
-                typeStr = attribute.GetValueType().ToString().Replace("+", ".");
+                typeStr = attribute.ValueTypeString().Replace("+", ".");
+            }
+            if (dictionary is null)
+            {
+                dictionary = this.MainDictionaryName();
             }
             string s = eol + " " + eol + "\t\tpublic " + typeStr + " " + this.UcKeyString(key);
             s += eol + "\t\t{";
-            s += eol + "\t\t\t get { return " + this.MainDictionaryName() + "[" + attributeKey + "]; }";
-            s += eol + "\t\t\t set { " + this.MainDictionaryName() + "[" + attributeKey + "] = value; }";
+            s += eol + "\t\t\t get { return " + dictionary + "[" + attributeKey + "]; }";
+            s += eol + "\t\t\t set { " + dictionary + "[" + attributeKey + "] = value; }";
             s += eol + "\t\t}";
             return s;
         }
@@ -1606,20 +1618,34 @@ namespace DistributedAlgorithms
         /// \return The new getters setters.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string CreateGettersSetters(string enumClass, string targetSubject, string targetAlgorithm, bool isMessage)
+        public string CreateGettersSetters(string enumClass, 
+            string targetSubject, 
+            string targetAlgorithm, 
+            string sourceSubject,
+            string sourceAlgorithm,
+            bool isMessage)
         {
             string s = "";
             foreach (var entry  in this)
             {
                 if (targetAlgorithm != "")
                 {
-                    if (!KeyOfThisClass(entry.Key, targetSubject, targetAlgorithm))
+                    if (!KeyOfThisClass(entry.Key, targetSubject, targetAlgorithm, sourceSubject, sourceAlgorithm))
                     {
                         continue;
                     }
                 }
-                string attributeKey = this.AttributeKey((object)entry.Key, enumClass);
-                s += GetterSetterString(entry.Key, (Attribute)entry.Value, attributeKey);
+                string attributeKey;
+                if (isMessage)
+                {
+                    attributeKey = this.MessageAttributeKey((object)entry.Key, enumClass);
+                    s += GetterSetterString(entry.Key, (Attribute)entry.Value, attributeKey, "or");
+                }
+                else
+                {
+                    attributeKey = this.AttributeKey((object)entry.Key, enumClass);
+                    s += GetterSetterString(entry.Key, (Attribute)entry.Value, attributeKey);
+                }
             }
             return s;
         }
@@ -1649,7 +1675,12 @@ namespace DistributedAlgorithms
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string InitMethodString(object key, string enumClass, string targetSubject, string targetAlgorithm)
+        public string InitMethodString(object key, 
+            string enumClass, 
+            string targetSubject, 
+            string targetAlgorithm,
+            string sourceSubject,
+            string sourceAlgorithm)
         {
             string eol = Environment.NewLine;
             string s = eol + " " + eol + "\t\tprotected AttributeDictionary " + this.InitMethodName() + "()";
@@ -1658,7 +1689,7 @@ namespace DistributedAlgorithms
             s += eol + "\t\t\tdictionary.selfEnumName = " + "\"" + this.DictionaryEnum(ClassFactory.GenerateNamespace(targetSubject, targetAlgorithm), enumClass) + "\";";
             foreach (var entry in this)
             {
-                if (!KeyOfThisClass(entry.Key, targetSubject, targetAlgorithm))
+                if (!KeyOfThisClass(entry.Key, targetSubject, targetAlgorithm, sourceSubject, sourceAlgorithm))
                 {
                     continue;
                 }
@@ -1697,7 +1728,7 @@ namespace DistributedAlgorithms
         /// \return True if it succeeds, false if it fails.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static bool KeyOfThisClass(dynamic key, string targetSubject, string targetAlgorithm)
+        public static bool KeyOfThisClass(dynamic key, string targetSubject, string targetAlgorithm, string sourceSubject, string sourceAlgorithm)
         {
             // If the key is string this is a key that was generated in this operation
             if (key is string)
@@ -1708,6 +1739,13 @@ namespace DistributedAlgorithms
             string keyTypeString = key.GetType().ToString();
             if (keyTypeString.IndexOf(newAlgorithmNameStace) != -1)
                 return true;
+
+            // If the key belongs to the source class (Cpoying a class)
+            string sourceAlgorithmNameStace = sourceSubject + "." + sourceAlgorithm;
+            //string keyTypeString = key.GetType().ToString();
+            if (keyTypeString.IndexOf(sourceAlgorithmNameStace) != -1)
+                return true;
+
             return false;
         }
         #endregion

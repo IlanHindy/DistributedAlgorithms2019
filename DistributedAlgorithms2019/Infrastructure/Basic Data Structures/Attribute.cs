@@ -1436,6 +1436,20 @@ namespace DistributedAlgorithms
                 if ((bool)value) return "true";
                 else return "false";
             }
+
+            // If the value is double and it is a natural number (i.e. can be converted
+            // to int - generate a value with . after the number
+            if (value is double)
+            {
+                try
+                {
+                    return int.Parse(value.ToString()).ToString() + ".";
+                }
+                catch
+                {
+                    return value.ToString();
+                }
+            }
             return value.ToString();
         }
         #endregion
@@ -1549,24 +1563,8 @@ namespace DistributedAlgorithms
 
         public string ParameterString(object key)
         {
-            string s = "";
-
-            // If the type can be converted to double the type is double
-            // This correction is for the following:
-            // When reading attributes to the dictionary (In C# code generation) they are 
-            // set according to the value. If the value was double 0 it will be converted to int 0
-            // and when creating the methods code it will be int so we force it to double 
-            // (Even if the programmer declared it as int) 
-            try
-            {
-                double d;
-                d = Value;
-                s += d.GetType().ToString();
-            }
-            catch
-            {
-                s = Value.GetType().ToString();
-            }
+            string s = ValueTypeString();
+           
             s += " " + this.LcKeyString(key) + " = ";
             if (value is string)
                 return s + "\"" + value + "\"";
@@ -1577,6 +1575,28 @@ namespace DistributedAlgorithms
             if (value is NetworkElement)
                 return s + "null";
             return s + GetValueToString(value);
+        }
+
+        public string ValueTypeString()
+        {
+            // If the type can be converted to double the type is double
+            // This correction is for the following:
+            // When reading attributes to the dictionary (In C# code generation) they are 
+            // set according to the value. If the value was double 0 it will be converted to int 0
+            // and when creating the methods code it will be int so we force it to double 
+            // (Even if the programmer declared it as int) 
+            string s = "";
+            try
+            {
+                double d;
+                d = Value;
+                s += d.GetType().ToString();
+            }
+            catch
+            {
+                s = Value.GetType().ToString();
+            }
+            return s;
         }
       
         #endregion

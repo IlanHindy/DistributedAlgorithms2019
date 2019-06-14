@@ -159,13 +159,19 @@ namespace DistributedAlgorithms
                 // to prevent changes to it while running)
                 AttributeDictionary messageData = new AttributeDictionary();
                 messageData.DeepCopy(data);
-                BaseMessage message = process.BuildBaseAlgorithmMessage(
-                    messageData[Comps.Type],
-                    messageData[Comps.Name],
-                    messageData[Comps.Fields],
-                    round,
-                    messageData[Comps.Targets]);
-                process.SendWithNoEventsProcessing(message, BaseProcess.SelectingMethod.Include, messageData[Comps.Targets].AsList());
+                //BaseMessage message = process.BuildBaseAlgorithmMessage(
+                //    messageData[Comps.Type],
+                //    messageData[Comps.Name],
+                //    messageData[Comps.Fields],
+                //    round,
+                //    messageData[Comps.Targets]);
+                process.SendWithNoEventsProcessing(messageData[Comps.Type], 
+                    messageData[Comps.Fields], 
+                    BaseProcess.SelectingMethod.Include, 
+                    messageData[Comps.Name], 
+                    messageData[Comps.Targets].AsList(), 
+                    -1, -1);
+                //process.SendWithNoEventsProcessing(message, BaseProcess.SelectingMethod.Include, messageData[Comps.Targets].AsList());
             }
         }
         #endregion

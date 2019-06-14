@@ -85,7 +85,7 @@ namespace DistributedAlgorithms
         /// \return The activation phase.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static ActivationPhases ActivationPhase { get { return activationPhase; } }
+        public static ActivationPhases ActivationPhase { get { return activationPhase; } set { activationPhase = value; } }
 
 
         /// \brief true if network was changed.
@@ -662,7 +662,8 @@ namespace DistributedAlgorithms
             activationPhase = ActivationPhases.Init;
             FileUtilities.CreateDirsForNeteork();
             Logger.Init();
-            net.InitNetwork((int)Canvas_Draw.ActualWidth, (int)Canvas_Draw.ActualHeight);
+            //net.InitNetwork((int)Canvas_Draw.ActualWidth, (int)Canvas_Draw.ActualHeight);
+            net.InitNetwork(500, 500);
             activationPhase = ActivationPhases.Initiated;
             networkWasChanged = true;
             lastInitiationAction = LastInitiationAction.Init;

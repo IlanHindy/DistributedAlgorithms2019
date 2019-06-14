@@ -535,6 +535,14 @@ namespace DistributedAlgorithms
             return s;
         }
 
+        public static string MessageAttributeKey(this IValueHolder valueHolder, object attributeKey, string enumClass)
+        {
+            string keyString = valueHolder.UcKeyString(attributeKey);
+            object keyInParent = valueHolder.Parent.GetChildKey(valueHolder);
+            string enumString = valueHolder.GetEnumName(keyInParent, false);
+            return enumClass + "." + enumString + "." + keyString;
+        }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn public static string DictionaryEnum(this IValueHolder valueHolder, string enumClass, bool isMessage)
         ///

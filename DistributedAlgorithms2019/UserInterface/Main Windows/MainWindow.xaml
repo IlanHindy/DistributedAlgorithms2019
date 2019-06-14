@@ -362,8 +362,9 @@
                             <Image Source="{StaticResource Icon_Terminate}" Style="{StaticResource MenueItemImage}"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Show Breakpoints" Command="{StaticResource ShowBreakpoints}"/>
-                    <MenuItem Header="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}"/>
+                    <MenuItem x:Name="MenueItem_ShowBreakpoints"  Header="Show Breakpoints" Command="{StaticResource ShowBreakpoints}"/>
+                    <MenuItem x:Name="MenueItem_ShowFloatingPoint" Header="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}"/>
+                    <MenuItem x:Name="MenueItem_ShowMessages" Header="Show Messageas" Command="{StaticResource ShowMessages}"/>
                 </MenuItem>
                 <MenuItem Header="Program">
                     <MenuItem Header="Base Algorithm" Command="{StaticResource BaseAlgorithm}"/>
@@ -601,9 +602,15 @@
                         <Button x:Name="Button_Terminate" ToolTip="Terminate" Command="{StaticResource Terminate}">
                             <Image Source="{StaticResource Icon_Terminate}" Style="{StaticResource ToolBarImage}"/>
                         </Button>
-                        <Button x:Name="Button_ShowBreakpoints" Content="Show Breakpoints" ToolTip="Show Breakpoints" Command="{StaticResource ShowBreakpoints}"/>
-                        <Button x:Name="Button_ShowFloatingSummary" Content="Show Floating Summary" ToolTip="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}"/>
-                        <Button x:Name="Button_ShowMessages" Content="Show messages" ToolTip="Show Messages" Command="{StaticResource ShowMessages}"/>
+                        <Button x:Name="Button_ShowBreakpoints" Height="35" Width="75" ToolTip="Show Breakpoints" Command="{StaticResource ShowBreakpoints}">
+                            <TextBlock x:Name="TextBlock_ShowBreakpoints" Text="Show Breakpoints" TextWrapping="Wrap" TextAlignment="Center"/>
+                            </Button>
+                        <Button x:Name="Button_ShowFloatingSummary"  Height="35" Width="75" ToolTip="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}">
+                            <TextBlock x:Name="TextBlock_ShowFloatingSummary" Text="Show FloatingSummary" TextWrapping="Wrap" TextAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Button_ShowMessages" Height="35" Width="75" ToolTip="Show Messages" Command="{StaticResource ShowMessages}">
+                            <TextBlock x:Name="TextBlock_ShowMessages" Text="Show Messages" TextWrapping="Wrap" TextAlignment="Center"/>
+                        </Button>/>
                     </ToolBar>
                 </ToolBarTray>                
             </DockPanel>

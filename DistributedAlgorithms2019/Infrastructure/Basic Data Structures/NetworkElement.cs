@@ -85,6 +85,7 @@ namespace DistributedAlgorithms
         /// \brief Keys to be used in the ElementAttributes dictionary.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
         public enum eak { Edited, Type, Id }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2386,7 +2387,11 @@ namespace DistributedAlgorithms
         /// \return The new getters setters.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string CreateGettersSetters(string enumClass, string targetSubject = "", string targetAlgorithm = "")
+        public string CreateGettersSetters(string enumClass, 
+            string targetSubject = "", 
+            string targetAlgorithm = "",
+            string sourceSubject = "",
+            string sourceAlgorithm = "")
         {
             string result = "";
             bool isMessage = false;
@@ -2398,7 +2403,7 @@ namespace DistributedAlgorithms
             {
                 if (OperationalDictionaries[idx])
                 {
-                    result += Dictionaries()[idx].CreateGettersSetters(enumClass, targetSubject, targetAlgorithm, isMessage);
+                    result += Dictionaries()[idx].CreateGettersSetters(enumClass, targetSubject, targetAlgorithm, sourceSubject, sourceAlgorithm,isMessage);
                 }
             }
             return result;

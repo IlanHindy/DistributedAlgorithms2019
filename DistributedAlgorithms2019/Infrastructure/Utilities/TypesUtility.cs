@@ -174,7 +174,7 @@ namespace DistributedAlgorithms
          .
          **************************************************************************************************/
 
-        public static string GetKeyToString(object value)
+        public static string                                                                                                                                                                                                                                                     GetKeyToString(object value)
         {
             if (value.GetType().IsEnum)
             {

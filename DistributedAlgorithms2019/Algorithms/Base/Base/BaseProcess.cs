@@ -118,7 +118,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \brief Values that represent termination status.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public enum TerminationStatuses { NotTerminated, WaitingForNeighbours, WaitingForSelf }
+        public enum TerminationStatuses { NotTerminated, WaitingForNeighbours, WaitingForSelf, Terminated }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \enum SelectingMethod
@@ -1428,7 +1428,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             TerminationStatuses terminationStatus = or[bp.ork.TerminationStatus];
             string outgoingChannelsDestinations = "";
             OutGoingChannels.ForEach(delegate (BaseChannel channel) { outgoingChannelsDestinations += channel.ea[bc.eak.DestProcess].ToString() + ","; });
-            Logger.Log(Logger.LogMode.MainLogAndMessageTrace, ToString(), "", "OutGoingChannelsDestinations = " + outgoingChannelsDestinations + "TerminationStatus = " + TypesUtility.GetKeyToString(terminationStatus), message, "RunningWindow");
+            Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "Running Termination : " + ea[bp.eak.Name], "", "OutGoingChannelsDestinations = " + outgoingChannelsDestinations + "TerminationStatus = " + TypesUtility.GetKeyToString(terminationStatus), message, "RunningTermination");
             switch (terminationStatus)
             {
                 // If this is the first activation of the Terminate method (by direct calling 
@@ -1490,12 +1490,13 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                 // that this message arrived from self and the termination process ended
                 case TerminationStatuses.WaitingForSelf:
                     result = true;
+                    terminationStatus = or[bp.ork.TerminationStatus] = TerminationStatuses.Terminated;
                     break;
                 default:
                     result = false;
                     break;
             }
-            Logger.Log(Logger.LogMode.MainLogAndMessageTrace, ToString(), "Terminate()", "At the end of the method", "TerminationStatus = " + TypesUtility.GetKeyToString(or[bp.ork.TerminationStatus]), "RunningWindow");
+            Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "Running Termination : " + ea[bp.eak.Name], "Terminate()", "At the end of the method", "TerminationStatus = " + TypesUtility.GetKeyToString(or[bp.ork.TerminationStatus]), "RunningTermination");
             return result;
         }
 
@@ -1785,15 +1786,42 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \param ids              (List&lt;int&gt;) - The identifiers.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void SendWithNoEventsProcessing(BaseMessage message, SelectingMethod selectingMethod, List<int> ids)
-        {
-            List<int> messageTargets = MessageTargets(selectingMethod, ids);
+        //public void SendWithNoEventsProcessing(BaseMessage message, SelectingMethod selectingMethod, List<int> ids)
+        //{
+        //    List<int> messageTargets = MessageTargets(selectingMethod, ids);
 
+        //    foreach (BaseChannel channel in OutGoingChannels)
+        //    {
+        //        if (messageTargets.Exists(id => id == channel.ea[bc.eak.DestProcess]))
+        //        {
+        //            BaseMessage newMessage = new BaseMessage(network, message, channel);
+        //            BeforeSend(newMessage);
+        //            AsynchronousSender.StartSending(newMessage, this, channel);
+        //            AfterSend(newMessage);
+        //        }
+        //    }
+        //}
+
+        public void SendWithNoEventsProcessing(dynamic messageType,
+            AttributeDictionary fields,
+            SelectingMethod selectingMethod,
+            string name,
+            List<int> ids,
+            int round,
+            int logicalClock)
+        {
+            if (round == -1)
+            {
+                round = or[bp.ork.Round];
+            }
+            List<int> messageTargets = MessageTargets(selectingMethod, ids);
+            // Send the messages
             foreach (BaseChannel channel in OutGoingChannels)
             {
-                if (messageTargets.Exists(id => id == channel.ea[bc.eak.DestProcess]))
+                if (messageTargets.Any(id => channel.ea[bc.eak.DestProcess] == id))
                 {
-                    BaseMessage newMessage = new BaseMessage(network, message, channel);
+                    BaseMessage newMessage = ClassFactory.GenerateMessage(network, messageType, fields, channel, "", null, null, round, logicalClock);
+                    newMessage.Name = name;
                     BeforeSend(newMessage);
                     AsynchronousSender.StartSending(newMessage, this, channel);
                     AfterSend(newMessage);
@@ -1825,7 +1853,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \param logicalClock    (int) - The logical clock.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected void Send(dynamic messageType,
+        public void Send(dynamic messageType,
             AttributeDictionary fields,
             SelectingMethod selectingMethod,
             List<int> ids,

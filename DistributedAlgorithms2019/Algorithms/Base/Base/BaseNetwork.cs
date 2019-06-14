@@ -1459,26 +1459,25 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             while (true)
             {
                 Thread.Sleep(1000);
-                bool alive = false;
-               
-                // Usually the algorithm processing is finished by one
-                // or more processes activate the Process's Terminate
-                // method which starts a termination algorithm for the 
-                // network. In case that the Processes does not know
-                // if the termination conditions were fullfiled by 
-                // All the other processes this method is activated
-                if (!Terminate())
+                // The first condition for ending the running 
+                // is that all the processes finished
+                if (Processes.Any(p => p.IsAlive()))
                 {
-                    alive = true;
-                }
-                foreach (BaseProcess process in Processes)
-                {
-                    if (process.IsAlive() == true)
+
+                    // Usually the algorithm processing is finished by one
+                    // or more processes activate the Process's Terminate
+                    // method which starts a termination algorithm for the 
+                    // network. In case that the Processes does not know
+                    // if the termination conditions were fullfiled by 
+                    // All the other processes this method is activated
+                    if (Terminate())
                     {
-                        alive = true;
+                        MessageRouter.ReportFinishRunning();
+                        return;
                     }
+                    continue;
                 }
-                if (alive == false)
+                else
                 {
                     MessageRouter.ReportFinishRunning();
                     return;
@@ -1511,7 +1510,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         protected virtual bool Terminate()
         {
-            return true;
+            return false;
         }
 
         

@@ -76,21 +76,26 @@ namespace DistributedAlgorithms
         /// \brief Values that represent class.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected enum Class { Message, Network, Process, Channel}
+        protected enum Class { Message, Network, Process, Channel, SendMethods}
+
+        // When scanning the Message class different actions should be done according to the
+        // Depth of the attribute in the class                                                                                                                                                                                                                  
+        protected enum MessageClassLayer { MessageType, Messages, None}
+        protected Stack<int> messageClassLayerCount;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \brief (List&lt;string&gt;) - List of names of the enum class.
         ///         the names of the classes that contains the enums.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected List<string> enumClassNames = new List<string> { "m", "n", "p", "c" };
+        protected List<string> enumClassNames = new List<string> { "m", "n", "p", "c"};
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \brief (List&lt;string&gt;) - List of names of the class.
         ///        The suffix of the algorithm classes names.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected List<string> classNames = new List<string> { "Process", "Network", "Process", "Channel"};
+        protected List<string> classNames = new List<string> { "Message","Network", "Process", "Channel", "Process"};
         #endregion
         #region /// \name Members
         /// \brief  (string) - Source subject.
@@ -156,7 +161,7 @@ namespace DistributedAlgorithms
         ///        methods of the class.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected string[] methodsStrings = new string[4];
+        protected string[] methodsStrings = new string[5];
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \brief (HashSet&lt;string&gt;) - The syntax highlight.
@@ -434,7 +439,7 @@ namespace DistributedAlgorithms
 
             // Get the keys from the message types enum. from it the dictionary generation method 
             // will be produced 
-            List<dynamic> messagesKeys = TypesUtility.GetAllEnumValues(ClassFactory.GenerateMessageTypeEnum());
+            List<dynamic> messagesKeys = TypesUtility.GetAllEnumValues(ClassFactory.GenerateMessageTypeEnum(sourceSubject, sourceAlgorithm));
 
             // For each key in the MessageTypes enum call a method that returns the dictionary 
             // that represent the message and is put in the OperationResults dictionary
@@ -683,7 +688,11 @@ namespace DistributedAlgorithms
             {
                 if (controlsAttributeLinks[item].parentAttribute.Value is AttributeDictionary)
                 {
-                    if (AttributeDictionary.KeyOfThisClass(controlsAttributeLinks[item].key, targetSubject, targetAlgorithm))
+                    if (AttributeDictionary.KeyOfThisClass(controlsAttributeLinks[item].key, 
+                        targetSubject, 
+                        targetAlgorithm,
+                        sourceSubject,
+                        sourceAlgorithm))
                     {
                         if (ItemDisabled((TreeViewItem)item))
                         {
@@ -982,17 +991,35 @@ namespace DistributedAlgorithms
                 return;
             }
 
-            // The following are conditions for skipping the generating a code for a complex attribute
-            // Condition No. 1 the attribute is not a mainDictionary and the key is not from this class
-            if (!(attribute.Parent.Parent is null) && !AttributeDictionary.KeyOfThisClass(key, targetSubject, targetAlgorithm) ||
+            if (scanningType == ScanningType.Build)
+            {
+
+                if (classIdx == (int)Class.Message)
+                {
+                    if (TypesUtility.GetKeyToString(key) == "OperationResults")
+                    {
+                        messageClassLayerCount.Push(1);
+                        messageClassLayerCount.Push(((AttributeDictionary)attribute.Value).Count);
+                    }
+                    return;
+                }
+
+                // The following are conditions for skipping the generating a code for a complex attribute
+                // Condition No. 1 the attribute is not a mainDictionary and the key is not from this class
+                if (!(attribute.Parent.Parent is null) && !AttributeDictionary.KeyOfThisClass(key,
+                    targetSubject,
+                    targetAlgorithm,
+                    sourceSubject,
+                    sourceAlgorithm) ||
 
                 // Condition No. 2  the attribute is a NetworkElement
                 attribute.Value is NetworkElement ||
 
                 // Condition No.3 we are inside scanning of an attribute that should be skipped
                 skipStack.Count > 0)
-            {
-                skipStack.Push(key);
+                {
+                    skipStack.Push(key);
+                }
             }
         }
 
@@ -1040,7 +1067,7 @@ namespace DistributedAlgorithms
             {
                 if (attribute.Value is AttributeDictionary)
                 {
-                    if (classIdx == (int)Class.Message && attribute.GetEnumName((object)key, true) == "ork")
+                    if (classIdx == (int)Class.Message && attribute.GetEnumName((object)key, true) == "ork" )
                     {
                         ((AttributeDictionary)attribute.Value).AddConsts(consts, true);
                     }
@@ -1057,35 +1084,78 @@ namespace DistributedAlgorithms
             // Foe each other entry a method that builds the data structure
             if (classIdx == (int)Class.Message)
             {
-                if (attribute.GetEnumName((object)key, true) == "ork")
+                switch ((MessageClassLayer)messageClassLayerCount.Count - 1)
                 {
-                    methodsStrings[classIdx] += ((AttributeDictionary)attribute.Value).SendMessagesStrings();
+                    case MessageClassLayer.MessageType:
+                        gettersSettersStrings[classIdx] += MessageTypeGetterSetter();
+                        methodsStrings[(int)Class.SendMethods] += ((AttributeDictionary)attribute.Value).SendMessagesStrings("m");
+                        break;
+                    case MessageClassLayer.Messages:
+                        gettersSettersStrings[classIdx] += ((AttributeDictionary)attribute.Value).CreateGettersSetters("m",
+                            targetSubject,
+                            targetAlgorithm,
+                            sourceSubject,
+                            sourceAlgorithm,
+                            true);
+                        methodsStrings[(int)Class.SendMethods] += attribute.Value.MessageMethodString(enumClassNames[classIdx], targetSubject, targetAlgorithm);
+                        break;
+                    default:
+                        methodsStrings[(int)Class.SendMethods] += attribute.Value.MessageMethodString(enumClassNames[classIdx], targetSubject, targetAlgorithm);
+                        break;
+
                 }
-                else
+                int topCount = messageClassLayerCount.Pop() - 1;
+                if(topCount > 0)
                 {
-                    methodsStrings[classIdx] += attribute.Value.MessageMethodString(enumClassNames[classIdx], targetSubject, targetAlgorithm);
+                    messageClassLayerCount.Push(topCount);
                 }
             }
-
-            // If the class generated is not a message we generate 2 types of methods
-            // For the main dictionary we generate an InitMainDictionary method
-            // For the others we generate a regular init method
+            //// If the class generated is not a message we generate 2 types of methods
+            //// For the main dictionary we generate an InitMainDictionary method
+            //// For the others we generate a regular init method
             else
             {
                 if (attribute.Parent.Parent is null)
                 {
-                    methodsStrings[classIdx] += ((AttributeDictionary)attribute.Value).InitMainDictionaryMethodString(key, enumClassNames[classIdx], ref gettersSettersStrings[classIdx], targetSubject, targetAlgorithm);
+                    methodsStrings[classIdx] += ((AttributeDictionary)attribute.Value).InitMainDictionaryMethodString(key, enumClassNames[classIdx],
+                        ref gettersSettersStrings[classIdx],
+                        targetSubject,
+                        targetAlgorithm,
+                        sourceSubject,
+                        sourceAlgorithm);
                 }
                 else
                 {
                     methodsStrings[classIdx] += attribute.Value.InitMethodString(key, enumClassNames[classIdx], targetSubject, targetAlgorithm);
                 }
             }
+            //    if (attribute.GetEnumName((object)key, true) == "ork")
+            //    {
+            //        // Sent messages methods written to seperate string
+            //        // Wich will be partial class for the process
+            //        methodsStrings[(int)Class.SendMethods] += ((AttributeDictionary)attribute.Value).SendMessagesStrings(targetAlgorithm + "Message");
+            //        //methodsStrings[classIdx] += CreateMessageTypeGetter();
+            //    }
+            //    else
+            //    {
+            //        //CreateMessageGetterSetter()
+            //        methodsStrings[classIdx] += attribute.Value.MessageMethodString(enumClassNames[classIdx], targetSubject, targetAlgorithm);
+            //    }
+            //}
+
+
 
             // If attribute is dictionary - generate enum
             if (attribute.Value is AttributeDictionary)
             {
-                enumsClassesStrings[classIdx] += ((AttributeDictionary)attribute.Value).EnumString(enumClassNames[classIdx], classIdx == (int)Class.Message, targetSubject, targetAlgorithm, syntaxHighlight);
+               
+                    enumsClassesStrings[classIdx] += ((AttributeDictionary)attribute.Value).EnumString(enumClassNames[classIdx],
+                        classIdx == (int)Class.Message,
+                        targetSubject,
+                        targetAlgorithm,
+                        sourceSubject,
+                        sourceAlgorithm,
+                        syntaxHighlight);
             }
         }
 
@@ -1172,7 +1242,11 @@ namespace DistributedAlgorithms
             // Advance the version of the algorithm
             AdvanceVersion();
 
-            for(classIdx = 0; classIdx < classNames.Count; classIdx ++)
+            // Scan the 4 classes. The 5th class is an addition of the Process
+            // class that holds the sending messages methods. It is filled
+            // when scanning the Messages NetworkElement is done
+            messageClassLayerCount = new Stack<int>();
+            for(classIdx = 0; classIdx < classNames.Count - 1; classIdx ++)
             {
                 ScanClass();
             }
@@ -1256,8 +1330,8 @@ namespace DistributedAlgorithms
                 string constant;
                 if (key.Substring(key.Length - 2) == "__")
                 {
-                    type = "m.MessageTypes";
-                    value = "m.MessageTypes." + char.ToUpper(key[0]) + key.Substring(1, key.Length - 3);
+                    type = "m" + ".MessageTypes";
+                    value = "m" + ".MessageTypes." + char.ToUpper(key[0]) + key.Substring(1, key.Length - 3);
                     constant = char.ToUpper(key[0]) + key.Substring(1, key.Length - 3);
                 }
                 else
@@ -1268,6 +1342,16 @@ namespace DistributedAlgorithms
                 }
                 s += eol + "\t\tconst " + type +" " + constant + " = " + value + ";";
             }
+            return s;
+        }
+
+        protected string MessageTypeGetterSetter()
+        {
+            string s = eol + "\t\tpublic new m.MessageTypes MessageType";
+            s += eol + "\t\t{";
+            s += eol + "\t\t\tget { return pa[bm.pak.MessageType]; }";
+            s += eol + "\t\t\tset { pa[bm.pak.MessageType] = value; }";
+            s += eol + "\t\t}";
             return s;
         }
 
@@ -1305,18 +1389,57 @@ namespace DistributedAlgorithms
         ///          
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //protected bool CreateClass(ref string fileText, string constsString)
+        //{
+
+        //    if (!ShowClass(ref fileText, "enum", enumsClassesStrings[classIdx], enumClassNames[classIdx] + " (for class " + targetAlgorithm + classNames[classIdx] + ")"))
+        //        return false;
+
+        //    string classString = CreateClassStart(classNames[classIdx]);
+        //    if (classIdx != (int)Class.Message)
+        //    {
+        //        classString += constsString;
+        //    }
+        //    classString += gettersSettersStrings[classIdx];
+        //    if (classIdx == (int)Class.Network)
+        //    {
+        //        classString += CreateVersionMethod();
+        //        classString += CreateSetToCentralizedAndDirected();
+        //    }
+        //    classString += methodsStrings[classIdx];
+        //    classString += CreateClassEnd();
+
+        //    string className;
+        //    if (classIdx != (int)Class.Message)
+        //        className = targetAlgorithm + "Process (Methods for sending messages)";
+        //    else
+        //        className = targetAlgorithm + classNames[classIdx];
+        //    if (!ShowClass(ref fileText, "partial", classString, className))
+        //        return false;
+
+        //    return true;
+        //}
+
         protected bool CreateClass(ref string fileText, string constsString)
         {
-                        
-            if (!ShowClass(ref fileText, "enum", enumsClassesStrings[classIdx], enumClassNames[classIdx] + " (for class " + targetAlgorithm + classNames[classIdx] + ")"))
-                return false;
+
+            if (classIdx != (int)Class.SendMethods)
+            {
+                if (!ShowClass(ref fileText, "enum", enumsClassesStrings[classIdx], enumClassNames[classIdx] + " (for class " + targetAlgorithm + classNames[classIdx] + ")"))
+                    return false;
+            }
 
             string classString = CreateClassStart(classNames[classIdx]);
-            if (classIdx != (int)Class.Message)
+            if (classIdx != (int)Class.Message && classIdx != (int)Class.SendMethods)
             {
                 classString += constsString;
             }
-            classString += gettersSettersStrings[classIdx];
+
+            if (classIdx != (int)Class.SendMethods)
+            {
+                classString += gettersSettersStrings[classIdx];
+            }
+
             if (classIdx == (int)Class.Network)
             {
                 classString += CreateVersionMethod();
@@ -1326,13 +1449,30 @@ namespace DistributedAlgorithms
             classString += CreateClassEnd();
 
             string className;
-            if (classIdx != (int)Class.Message)
-                className = targetAlgorithm + "Process (Methods for sending messages)";
-            else
                 className = targetAlgorithm + classNames[classIdx];
+            if (classIdx == (int)Class.SendMethods)
+            {
+                className += " (Additions for messages generating)";
+            }
             if (!ShowClass(ref fileText, "partial", classString, className))
                 return false;
 
+            return true;
+        }
+
+        protected bool CreateMessageClass(ref string fileText)
+        {
+            string classString = CreateClassStart("Message");
+            classString += enumsClassesStrings[4].Replace("ork", "MessageTypes");
+            classString += eol + "\t\tpublic new MessageTypes MessageType";
+            classString += eol + "\t\t{";
+            classString += eol + "\t\t\tget { return pa[bm.pak.MessageType]; }";
+            classString += eol + "\t\t\tset { pa[bm.pak.MessageType] = value; }";
+            classString += eol + "\t\t}";
+            classString += CreateClassEnd();
+
+            if (!ShowClass(ref fileText, "partial", classString, " Form MessageTypes enum"))
+                return false;
             return true;
         }
 
@@ -1419,8 +1559,8 @@ namespace DistributedAlgorithms
             if (firstCodeGeneration)
             {
                 try
-                {
-                    Type pakEnum = ClassFactory.GenerateEnum("pak", "n", targetSubject, targetAlgorithm);
+                { 
+                    Type pakEnum = ClassFactory.GenerateEnum("pak", "n", sourceSubject, sourceAlgorithm);
                     dynamic versionKey = TypesUtility.GetKeyFromString(pakEnum, "Version");
                     int version = networkElements[(int)Class.Network].pa[versionKey];
                     networkElements[(int)Class.Network].pa.GetAttribute(versionKey).SetFromWindow( ++version, this);
@@ -1669,7 +1809,7 @@ namespace DistributedAlgorithms
                 Button CancelButton = CustomizedMessageBox.SetButton("Cancel");
                 string showResult = CustomizedMessageBox.Show(new List<Control> { headerLabel, syntaxHighlightControl },
                     "Add Algorithm Dialog",
-                    new List<Button> { OKButton, ConfirmAllButton, CancelButton }, Icons.Info, false);
+                    new List<Button> { OKButton, ConfirmAllButton, CancelButton }, Icons.Info, true);
                 switch (showResult)
                 {
                     case "OK":
@@ -1710,6 +1850,7 @@ namespace DistributedAlgorithms
 
         public void CreateAlgorithmFiles()
         {
+            classNames[0] = "Message";
             for (classIdx = 0; classIdx < classNames.Count; classIdx++)
             {
                 string text = File.ReadAllText(Config.Instance[Config.Keys.AlgorithmsPath] + "\\" + sourceSubject + "\\" + sourceAlgorithm + "\\" + sourceAlgorithm + classNames[classIdx] + ".cs");
@@ -1717,6 +1858,7 @@ namespace DistributedAlgorithms
                 text = text.Replace(sourceAlgorithm, targetAlgorithm);
                 File.WriteAllText(Config.Instance[Config.Keys.AlgorithmsPath] + "\\" + targetSubject + "\\" + targetAlgorithm + "\\" + targetAlgorithm + classNames[classIdx] + ".cs", text);
             }
+            classNames[0] = "Process";
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

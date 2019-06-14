@@ -103,7 +103,7 @@ namespace DistributedAlgorithms
 
             //Default filters - filters are string which role is to decide whether a log 
             //will be printed
-            InitFilters();
+            //InitFilters();
         }
 
         public static void LoadFilters(XmlNode xmlNode, Type hostType = null)

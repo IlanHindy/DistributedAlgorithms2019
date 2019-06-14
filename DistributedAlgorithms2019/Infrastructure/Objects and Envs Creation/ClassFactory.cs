@@ -772,7 +772,7 @@ namespace DistributedAlgorithms
             }
             else
             {
-                return Type.GetType(GenerateNamespace(subject, algorithm) + "." + "m+MessageTypes");
+                return Type.GetType(GenerateNamespace(subject, algorithm) + ".m+MessageTypes");
             }            
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
