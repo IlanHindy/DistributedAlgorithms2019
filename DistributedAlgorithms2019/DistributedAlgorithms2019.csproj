@@ -290,6 +290,55 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Algorithms Data\Base\Base\Networks\Base\Data\Base.data" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport\Documents\Processed\ChandyLamport.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport\Documents\Processed\ChandyLamport__temp__.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport\Documents\PseudoCode\ChandyLamport_PseudoCode.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport\Documents\Source\Distributed Algorithms Chapter 3 - Snapshots.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport\Networks\ChandyLamport\Data\ChandyLamport.data" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport\Networks\ChandyLamport\Data\ChandyLamport_New.data" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_NewStyle\Documents\Processed\ChandyLamport_NewStyle.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_NewStyle\Documents\Processed\ChandyLamport_NewStyle__temp__.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_NewStyle\Documents\PseudoCode\ChandyLamport_NewStyle_PseudoCode.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_NewStyle\Documents\Source\Distributed Algorithms Chapter 3 - Snapshots.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_NewStyle\Networks\ChandyLamport_NewStyle\Data\ChandyLamport_NewStyle.data" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_NewStyle\Networks\ChandyLamport_NewStyle\Data\ChandyLamport_NewStyle1.data" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_OneRound\Documents\Processed\ChandyLamport_OneRound.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_OneRound\Documents\Processed\ChandyLamport_OneRound__temp__.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_OneRound\Documents\PseudoCode\ChandyLamport_OneRound_PseudoCode.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_OneRound\Documents\Source\Distributed Algorithms Chapter 3 - Snapshots.docx" />
+    <None Include="Algorithms Data\Snapshots\ChandyLamport_OneRound\Networks\ChandyLamport_OneRound\Data\ChandyLamport_OneRound.data" />
+    <None Include="Algorithms Data\Snapshots\LaiYoung_OneRound\Documents\Processed\LaiYoung_OneRound.docx" />
+    <None Include="Algorithms Data\Snapshots\LaiYoung_OneRound\Documents\Processed\LaiYoung_OneRound__temp__.docx" />
+    <None Include="Algorithms Data\Snapshots\LaiYoung_OneRound\Documents\PseudoCode\LaiYoung_OneRound_PseudoCode.docx" />
+    <None Include="Algorithms Data\Snapshots\LaiYoung_OneRound\Documents\Source\Distributed Algorithms Chapter 3 - Snapshots.docx" />
+    <None Include="Algorithms Data\Snapshots\LaiYoung_OneRound\Networks\LaiYoung_OneRound\Data\LaiYoung_OneRound.data" />
+    <None Include="Algorithms Data\Templates\Template\Networks\Template\Data\Template.data" />
+    <None Include="Algorithms Data\Tests\Test\Networks\Test\Data\Test.data" />
+    <None Include="Algorithms Data\Tests\Test\Networks\Test\Data\Test1.data" />
+    <None Include="Documents\Distributted Algorithms מסמך בדיקו1.docx" />
+    <None Include="Documents\Distributted Algorithms מסמך בדיקות.docx" />
+    <None Include="Documents\Visual studio editting.docx" />
+    <None Include="Documents\פיתוחים עתידיים.docx" />
+    <None Include="External Tools\Docs\CreateDocuments.bat" />
+    <None Include="External Tools\Docs\Doxyfile" />
+    <None Include="External Tools\Docs\DoxyWizared.bat" />
+    <None Include="External Tools\Docs\ViewDocuments.bat" />
+    <None Include="Program Data\Config\DistributedAlgorithmsConfig.config" />
+    <None Include="Program Data\Config\DistributedAlgorithmsConfig[התנגשות].config" />
+    <None Include="Program Data\Documentation\AccessAfterAutomaticCodeGeneration.dox" />
+    <None Include="Program Data\Documentation\BaseAlgorithmSetting.dox" />
+    <None Include="Program Data\Documentation\BasicConcepts.dox" />
+    <None Include="Program Data\Documentation\Checks.dox" />
+    <None Include="Program Data\Documentation\DataStructures.dox" />
+    <None Include="Program Data\Documentation\DefineAttributePresentation.dox" />
+    <None Include="Program Data\Documentation\ImplementAlgorithm.dox" />
+    <None Include="Program Data\Documentation\ImplementingAlgorithm.docx" />
+    <None Include="Program Data\Documentation\InternalEventSetting.dox" />
+    <None Include="Program Data\Documentation\IValueHolderScanningOperations.dox" />
+    <None Include="Program Data\Documentation\MainPage.dox" />
+    <None Include="Program Data\Operation Logs\EditLog.log.log" />
+    <None Include="Program Data\Word Templates\Empty Word Document.docx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -374,6 +423,15 @@
     <Resource Include="Icons\Success.png" />
     <Resource Include="Icons\Terminate_icon.png" />
     <Resource Include="Icons\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="External Tools\Atomineer\DoxygenTemplates.xml" />
+    <Resource Include="External Tools\Atomineer\MethodReturns.xml" />
+    <Resource Include="External Tools\Atomineer\Parameters.xml" />
+    <Resource Include="External Tools\Atomineer\Prefs.xml" />
+    <Resource Include="External Tools\Atomineer\PrefSets.xml" />
+    <Resource Include="External Tools\Atomineer\Variables.xml" />
+    <Resource Include="External Tools\Docs\doxygen_log.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

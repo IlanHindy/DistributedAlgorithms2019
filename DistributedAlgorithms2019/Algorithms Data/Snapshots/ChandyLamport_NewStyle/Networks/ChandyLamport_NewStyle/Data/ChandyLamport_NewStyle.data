@@ -997,7 +997,7 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bp+ork" Key="ReceivePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53802</Value>
+            <Value>56631</Value>
           </Value>
         </Attribute>
       </OperationResults>
@@ -1573,7 +1573,7 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bp+ork" Key="ReceivePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53803</Value>
+            <Value>56632</Value>
           </Value>
         </Attribute>
       </OperationResults>
@@ -2078,7 +2078,7 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bp+ork" Key="ReceivePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53804</Value>
+            <Value>56633</Value>
           </Value>
         </Attribute>
       </OperationResults>
@@ -2484,12 +2484,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53805</Value>
+            <Value>56634</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53802</Value>
+            <Value>56631</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -2852,12 +2852,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53806</Value>
+            <Value>56635</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53803</Value>
+            <Value>56632</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -3220,12 +3220,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53807</Value>
+            <Value>56636</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53803</Value>
+            <Value>56632</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -3588,12 +3588,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53808</Value>
+            <Value>56637</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53804</Value>
+            <Value>56633</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -3956,12 +3956,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53809</Value>
+            <Value>56638</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53804</Value>
+            <Value>56633</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -4324,12 +4324,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53810</Value>
+            <Value>56639</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53802</Value>
+            <Value>56631</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -4692,12 +4692,12 @@
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53811</Value>
+            <Value>56640</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
-            <Value>53804</Value>
+            <Value>56633</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
@@ -4824,6 +4824,668 @@
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="PresentationTxt" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
           <Value>
             <Value>8</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesBackground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesForeground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+      </PresentationParametersBackup>
+    </Channel>
+    <Channel Details="Id:9 From:1 To:0">
+      <ElementAttributes selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Type" Type="System.String" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.NetworkElement.TypeElementWindowPrms">
+          <Value>
+            <Value>DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.ChandyLamport_NewStyleChannel</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Edited" Type="System.Boolean" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>True</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Id" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>9</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+eak" Key="SourceProcess" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+eak" Key="DestProcess" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>0</Value>
+          </Value>
+        </Attribute>
+      </ElementAttributes>
+      <PrivateAttributes selfEnumName="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+pak" />
+      <OperationParameters selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+opk" Key="Breakpoints" Type="DistributedAlgorithms.Breakpoint" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Breakpoint Details="Channel:Channel Breakpoint">
+              <ElementAttributes selfEnumName="">
+                <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Type" Type="System.String" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.NetworkElement.TypeElementWindowPrms">
+                  <Value>
+                    <Value>DistributedAlgorithms.Breakpoint</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Edited" Type="System.Boolean" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>False</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Id" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>0</Value>
+                  </Value>
+                </Attribute>
+              </ElementAttributes>
+              <PrivateAttributes selfEnumName="" />
+              <OperationParameters selfEnumName="" />
+              <OperationResults selfEnumName="">
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="HostingElementType" Type="DistributedAlgorithms.Breakpoint+HostingElementTypes" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Channel</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Name" Type="System.String" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Channel Breakpoint</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Enable" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>True</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Operator" Type="DistributedAlgorithms.Breakpoint+Operators" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Or</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="IndexInList" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>0</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListParameterOneOrAll" Type="DistributedAlgorithms.Breakpoint+ListParameterOneOrAll" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>One</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListEvaluationMode" Type="DistributedAlgorithms.Breakpoint+ListEvaluationModes" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>OneTrueFromAllValuesToAllValues</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastCheckResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastRunningResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Parameters" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+              </OperationResults>
+              <OperationResultsBackup selfEnumName="">
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="HostingElementType" Type="DistributedAlgorithms.Breakpoint+HostingElementTypes" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Network</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Name" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value> Breakpoint</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Enable" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>True</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Operator" Type="DistributedAlgorithms.Breakpoint+Operators" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Or</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="IndexInList" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>0</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListParameterOneOrAll" Type="DistributedAlgorithms.Breakpoint+ListParameterOneOrAll" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>One</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListEvaluationMode" Type="DistributedAlgorithms.Breakpoint+ListEvaluationModes" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>OneTrueFromAllValuesToAllValues</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastCheckResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastRunningResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Parameters" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+              </OperationResultsBackup>
+              <PresentationParameters selfEnumName="" />
+              <PresentationParametersBackup selfEnumName="" />
+            </Breakpoint>
+          </Value>
+        </Attribute>
+      </OperationParameters>
+      <OperationResults selfEnumName="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="Recorderd" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>False</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="State" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>56641</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>56631</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>NotTerminated</Value>
+          </Value>
+        </Attribute>
+      </OperationResults>
+      <OperationResultsBackup selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="Recorderd" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>False</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="State" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>0</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>0</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>NotTerminated</Value>
+          </Value>
+        </Attribute>
+      </OperationResultsBackup>
+      <PresentationParameters selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="LineColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="HeadColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Background" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Foreground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="PresentationTxt" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>9</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesBackground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesForeground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+      </PresentationParameters>
+      <PresentationParametersBackup selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="LineColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="HeadColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Background" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Foreground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="PresentationTxt" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>9</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesBackground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesForeground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+      </PresentationParametersBackup>
+    </Channel>
+    <Channel Details="Id:10 From:2 To:1">
+      <ElementAttributes selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Type" Type="System.String" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.NetworkElement.TypeElementWindowPrms">
+          <Value>
+            <Value>DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.ChandyLamport_NewStyleChannel</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Edited" Type="System.Boolean" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>True</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Id" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>10</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+eak" Key="SourceProcess" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>2</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+eak" Key="DestProcess" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+      </ElementAttributes>
+      <PrivateAttributes selfEnumName="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+pak" />
+      <OperationParameters selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+opk" Key="Breakpoints" Type="DistributedAlgorithms.Breakpoint" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Breakpoint Details="Channel:Channel Breakpoint">
+              <ElementAttributes selfEnumName="">
+                <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Type" Type="System.String" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.NetworkElement.TypeElementWindowPrms">
+                  <Value>
+                    <Value>DistributedAlgorithms.Breakpoint</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Edited" Type="System.Boolean" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>False</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.ne+eak" Key="Id" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>0</Value>
+                  </Value>
+                </Attribute>
+              </ElementAttributes>
+              <PrivateAttributes selfEnumName="" />
+              <OperationParameters selfEnumName="" />
+              <OperationResults selfEnumName="">
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="HostingElementType" Type="DistributedAlgorithms.Breakpoint+HostingElementTypes" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Channel</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Name" Type="System.String" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Channel Breakpoint</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Enable" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>True</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Operator" Type="DistributedAlgorithms.Breakpoint+Operators" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Or</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="IndexInList" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>0</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListParameterOneOrAll" Type="DistributedAlgorithms.Breakpoint+ListParameterOneOrAll" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>One</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListEvaluationMode" Type="DistributedAlgorithms.Breakpoint+ListEvaluationModes" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>OneTrueFromAllValuesToAllValues</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastCheckResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastRunningResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Parameters" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+              </OperationResults>
+              <OperationResultsBackup selfEnumName="">
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="HostingElementType" Type="DistributedAlgorithms.Breakpoint+HostingElementTypes" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Network</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Name" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value> Breakpoint</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Enable" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>True</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Operator" Type="DistributedAlgorithms.Breakpoint+Operators" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>Or</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="IndexInList" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>0</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListParameterOneOrAll" Type="DistributedAlgorithms.Breakpoint+ListParameterOneOrAll" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>One</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="ListEvaluationMode" Type="DistributedAlgorithms.Breakpoint+ListEvaluationModes" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <Value>OneTrueFromAllValuesToAllValues</Value>
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastCheckResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="LastRunningResult" Type="DistributedAlgorithms.AttributeList" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+                <Attribute KeyType="DistributedAlgorithms.brp+ork" Key="Parameters" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="True" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+                  <Value>
+                    <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+                  </Value>
+                </Attribute>
+              </OperationResultsBackup>
+              <PresentationParameters selfEnumName="" />
+              <PresentationParametersBackup selfEnumName="" />
+            </Breakpoint>
+          </Value>
+        </Attribute>
+      </OperationParameters>
+      <OperationResults selfEnumName="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="Recorderd" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>False</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="State" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>56642</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="True" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>56632</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>NotTerminated</Value>
+          </Value>
+        </Attribute>
+      </OperationResults>
+      <OperationResultsBackup selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="Recorderd" Type="System.Boolean" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>False</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_NewStyle.c+ork" Key="State" Type="DistributedAlgorithms.AttributeList" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <AttributeList CodeAttributeCounter="0" DesignAttributeCounter="0" />
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="SourcePort" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>0</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="DestPort" Type="System.Int32" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>0</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ork" Key="TerminationStatus" Type="DistributedAlgorithms.Algorithms.Base.Base.BaseChannel+TerminationStatuses" Editable="False" Changed="False" IdInList="0" IncludedInShortDescription="False" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>NotTerminated</Value>
+          </Value>
+        </Attribute>
+      </OperationResultsBackup>
+      <PresentationParameters selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="LineColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="HeadColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Background" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Foreground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="PresentationTxt" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>10</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesBackground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesForeground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+      </PresentationParameters>
+      <PresentationParametersBackup selfEnumName="">
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="LineColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="HeadColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="FrameWidth" Type="System.Int32" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>1</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Background" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>White</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="Foreground" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>Black</Value>
+          </Value>
+        </Attribute>
+        <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="PresentationTxt" Type="System.String" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">
+          <Value>
+            <Value>10</Value>
           </Value>
         </Attribute>
         <Attribute KeyType="DistributedAlgorithms.Algorithms.Base.Base.bc+ppk" Key="MessagesFrameColor" Type="System.Drawing.KnownColor" Editable="True" Changed="False" IdInList="0" IncludedInShortDescription="True" IncludeInEqualsTo="True" EndInputOperation="DistributedAlgorithms.Attribute.DefaultEndInputOperations" ElementWindowPrmsMethod="DistributedAlgorithms.Attribute.DefaultElementWindowPrmsMethod">

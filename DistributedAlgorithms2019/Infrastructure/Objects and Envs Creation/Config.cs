@@ -454,6 +454,9 @@ namespace DistributedAlgorithms
                 FileUtilities.RemoveAlgorithmDataDirectory(algorithmName, pa[Keys.AlgorithmsDataPath]);
             }
 
+            // Git does not commit empty folders therefore each empty folder has to get an empty file
+            FileUtilities.CreateEmptyKeepFiles(pa[Keys.AlgorithmsDataPath]);
+
             // Update the config
             if (!AddAlgorithmsData(false))
             {

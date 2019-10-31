@@ -132,7 +132,7 @@ namespace DistributedAlgorithms
             string editLogFilePath = Config.Instance[Config.Keys.EditLogFilePath];
             CloseEditLogFile();
 
-            string fileName = editLogFilePath + editLogFileName + "." + "log";
+            string fileName = editLogFilePath + editLogFileName;
 
             //The log file operates by appending text so it has to be deleted at the beginning of the operation 
             if (File.Exists(fileName)) File.Delete(fileName);

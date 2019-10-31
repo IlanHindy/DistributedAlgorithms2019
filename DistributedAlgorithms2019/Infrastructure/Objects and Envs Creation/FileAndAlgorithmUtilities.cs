@@ -617,6 +617,23 @@ namespace DistributedAlgorithms
                 }
             }
         }
+
+        public static void CreateEmptyKeepFiles(string dir)
+        {
+            int fileCount = Directory.GetFiles(dir).Length;
+            string[] dirs = Directory.GetDirectories(dir);
+            if (fileCount == 0 && dirs.Length == 0)
+            {
+                File.WriteAllText(dir + "\\.keep", "");
+                return;
+            }
+
+            for (int idx = 0; idx < dirs.Length; idx ++)
+            {
+                CreateEmptyKeepFiles(dirs[idx]);
+            }
+        }
+    
         #endregion
         #region /// \name Code creation support
         ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1293,7 +1293,7 @@ namespace DistributedAlgorithms
                         .Where(t => t.Namespace != null)
                         .Where(t => t.Namespace.ToString().Contains("Algorithms"))
                          .Select(t => t.Namespace.ToString().Replace("DistributedAlgorithms.Algorithms.", ""))
-                         .Where(s => !s.Contains("DistributedAlgorithms"))
+                         .Where(s => !(s.Contains("DistributedAlgorithms") ||s.Contains("Distributed_Algorithms")))
                          .Distinct()
                          .ToList();
         }
