@@ -533,7 +533,7 @@ namespace DistributedAlgorithms
             CreateDirectory(Path.GetFullPath(networkPath));
             CreateDirectory(Path.GetFullPath(networkPath + "\\" + "Data"));
             CreateDirectory(Path.GetFullPath(networkPath + "\\" + "Logs"));
-            CreateDirectory(Path.GetFullPath(networkPath + "\\" + "Debug"));
+            CreateDirectory(Path.GetFullPath(networkPath + "\\" + "Debug Logs"));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
